@@ -1,4 +1,11 @@
 ResumeDatabase::Application.routes.draw do
+  get "static_pages/home"
+
+  get "users/new"
+  
+  match '/', 		to: 'static_pages#home', 	via: 'get'
+  match '/adduser', to: 'users#new', 			via: 'get'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,6 +56,7 @@ ResumeDatabase::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 
