@@ -1,10 +1,13 @@
 ResumeDatabase::Application.routes.draw do
+  get "admins/new"
+
   get "static_pages/home"
 
-  get "users/new"
+  resources :users
+  resources :admins
+  resources :sessions, only: [:new, :create, :destroy]
   
   match '/', 		to: 'static_pages#home', 	via: 'get'
-  match '/adduser', to: 'users#new', 			via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

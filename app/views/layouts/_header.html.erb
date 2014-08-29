@@ -1,10 +1,12 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
-		<%= link_to "sample app", '#', id: "logo" %>
+		<%= link_to "Base de données - CV", '#', id: "logo" %>
 		<nav>
 			<ul class="nav pull-right">
 				<li><%= link_to "Accueil",		'/' %></li>
-				<li><%= link_to "Nouveau",		adduser_path %></li>
+				<li><%= link_to "Nouveau",		'/users/new' %></li>
+				<li><%= link_to "Liste",		'/users/' %></li>
+				<li><%= link_to "Connexion",	'/sessions/new' %></li>
 			</ul>
 		</nav>
 	</div>

@@ -1,0 +1,27 @@
+<%-# This needs to be fixed: was not able use only one block for both admin and users...-%>
+
+<% if @user && @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Le formulaire contient <%= pluralize(@user.errors.count, "erreur") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @admin && @admin.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Le formulaire contient <%= pluralize(@admin.errors.count, "erreur") %>.
+    </div>
+    <ul>
+    <% @admin.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

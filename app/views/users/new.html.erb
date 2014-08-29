@@ -1,2 +1,20 @@
+<% provide(:title, 'Ajout') %>
 <h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages' %>
+
+		<%= f.label :Nom %>
+		<%= f.text_field :first_name %>
+	  
+		<%= f.label :Prénom %>
+		<%= f.text_field :last_name %>
+
+		<%= f.label :Email %>
+		<%= f.text_field :email %>
+
+		<%= f.submit "Ajouter", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

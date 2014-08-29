@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.19'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.12.1'
+gem 'strong_parameters'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -25,7 +28,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

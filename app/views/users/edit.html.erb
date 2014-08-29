@@ -1,6 +1,21 @@
-<h1>Editing user</h1>
+<% provide(:title, "Edition") %>
+<h1>Users#edit</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+	  
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.submit "Sauvegarder", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
