@@ -6,7 +6,8 @@ class Admin < ActiveRecord::Base
   end
   
   def self.authenticate(login, submitted_password)
-    admin = where(:login => "test")
+	<%-# To be checked -%>
+    admin = find_by_login(login)
     return nil  if admin.nil?
     return admin if admin.has_password?(submitted_password)
   end
