@@ -1,5 +1,5 @@
-<% provide(:title, 'Ajout') %>
-<h1>Users#new</h1>
+<% provide(:title, "Nouvel utilisateur") %>
+<h1><%= yield(:title) %></h1>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
