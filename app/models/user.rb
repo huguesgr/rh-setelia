@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  
-  attr_accessible :first_name, :last_name, :email
-  
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   

@@ -1,16 +1,23 @@
-class Admin < ActiveRecord::Base  
-  attr_accessible :login, :password, :password_digest
+class Admin < ActiveRecord::Base
+  validates_presence_of :login
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
 
-  def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
+  before_create :create_remember_token
+
+  has_secure_password
+
+  def Admin.new_remember_token
+    SecureRandom.urlsafe_base64
   end
-  
-  def self.authenticate(login, submitted_password)
-	<%-# To be checked -%>
-    admin = find_by_login(login)
-    return nil  if admin.nil?
-    return admin if admin.has_password?(submitted_password)
+
+  def Admin.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
   end
-  
-  validates :login, presence: true
+
+  private
+
+    def create_remember_token
+      self.remember_token = Admin.digest(Admin.new_remember_token)
+    end
 end
