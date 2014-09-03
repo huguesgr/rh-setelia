@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
-gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets'
 gem 'will_paginate', '3.0.4'
+
+gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bootstrap-navbar'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

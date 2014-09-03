@@ -1,6 +1,13 @@
 ResumeDatabase::Application.routes.draw do
+  get 'skills/index'
+
+  get 'skills/show'
+
+  get 'skills/new'
+
   resources :users
   resources :admins
+  resources :skills
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/home'     => 'static_pages#home',    via: 'get'
