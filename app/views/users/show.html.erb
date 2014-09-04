@@ -11,10 +11,24 @@
 </p>
 
 <p>
-  <b>Email:</b>
+  <b>Email :</b>
   <%= @user.email %>
 </p>
 
+<p>
+  <b>Compétences :</b>
+  <ol class="skills">
+    <%= render @skills %>
+  </ol>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <b>Langues :</b>
+  <ol class="speaks">
+    <%= render @speaks %>
+  </ol>
+</p>
+
+
+<%= link_to 'Edition', edit_user_path(@user) %> |
+<%= link_to 'Retour', users_path %>

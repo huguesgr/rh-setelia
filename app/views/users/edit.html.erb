@@ -15,6 +15,13 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :compétences %>
+      <ul class="checkbox-list">
+        <% @skills.each do |skill| -%>
+          <li><%= check_box_tag :skill_ids, skill.id, @user.skills.include?(skill), :name => 'user[skill_ids][]' -%> <%= skill.keyword -%></li>
+        <% end -%>
+      </ul>
+
       <%= f.submit "Sauvegarder", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

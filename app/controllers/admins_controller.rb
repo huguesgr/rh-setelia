@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-  
+  before_action :signed_in_user
+
   def create
     @admin = Admin.new(admin_params)
     if @admin.save

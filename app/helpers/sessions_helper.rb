@@ -26,4 +26,10 @@ module SessionsHelper
     cookies.delete(:remember_token)
     self.current_admin = nil
   end
+
+  # Before filters
+
+  def signed_in_user
+    redirect_to signin_url, notice: "Connectez-vous pour accéder à cette page." unless signed_in?
+  end
 end

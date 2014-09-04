@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -16,13 +18,16 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @skills = @user.skills.all
+    @speaks = @user.speaks.all
   end
   def edit
     @user = User.find(params[:id])
+    @skills = Skill.all
   end  
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(user_params) && @user.attributes = {'skill_ids' => []}.merge(params[:user] || {})
       flash[:success] = "Utilisateur modifié."
       redirect_to @user
     else

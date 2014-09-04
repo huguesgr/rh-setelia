@@ -1,17 +1,13 @@
 ResumeDatabase::Application.routes.draw do
-  get 'skills/index'
-
-  get 'skills/show'
-
-  get 'skills/new'
-
   resources :users
   resources :admins
   resources :skills
+  resources :languages
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/home'     => 'static_pages#home',    via: 'get'
   match '/signout'  => 'sessions#destroy',     via: 'delete'
+  match '/signin'  => 'sessions#new',     via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
