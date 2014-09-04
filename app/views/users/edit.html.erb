@@ -6,23 +6,35 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :first_name %>
+      <%= f.label :prénom %>
       <%= f.text_field :first_name %>
 	  
-      <%= f.label :last_name %>
+      <%= f.label :nom %>
       <%= f.text_field :last_name %>
 
-      <%= f.label :email %>
+      <%= f.label :"e-mail" %>
       <%= f.text_field :email %>
 
       <%= f.label :compétences %>
       <ul class="checkbox-list">
         <% @skills.each do |skill| -%>
-          <li><%= check_box_tag :skill_ids, skill.id, @user.skills.include?(skill), :name => 'user[skill_ids][]' -%> <%= skill.keyword -%></li>
+          <li><%= check_box_tag :skill_ids, skill.id, @user.skills.include?(skill), :name => 'user[skill_ids][]' %> <%= skill.keyword %></li>
         <% end -%>
       </ul>
 
-      <%= f.submit "Sauvegarder", class: "btn btn-large btn-primary" %>
+      <%= f.label :langues %>
+      <%= :"see http://stackoverflow.com/questions/18686189/rails-4-not-updating-nested-attributes" %>
+      <ul class="checkbox-list">
+        <% @languages.each do |language| %>
+          <li>
+            <%= check_box_tag :language_id, language.id, @user.languages.include?(language), :name => 'user[language_ids][]' %> 
+            <%= language.name %>
+            <%= select_tag('user[speak_levels][]', options_for_select(language_levels)) %>
+          </li>
+        <% end -%>
+      </ul>
+
+      <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
     <% end %>
   </div>
 </div>

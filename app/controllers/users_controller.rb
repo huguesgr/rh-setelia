@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @skills = Skill.all
+    @languages = Language.all
   end  
   def update
     @user = User.find(params[:id])
@@ -40,4 +41,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email)
     end
+
 end
