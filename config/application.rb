@@ -60,5 +60,7 @@ module ResumeDatabase
     config.assets.version = '1.0'
 	
 	config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    #config.i18n.default_locale = :fr
   end
 end

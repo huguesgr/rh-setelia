@@ -1,0 +1,31 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= f.label :first_name, "Prénom" %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name, "Nom" %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email, "E-mail" %>
+  <%= f.text_field :email %>
+
+  <%= f.label :skills, "Compétences" %>
+  <div class="checkbox">
+    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
+  </div>
+
+  <%= f.label :langues %>
+  <%= f.fields_for :speaks do |s| %>
+    <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id %>
+    <%= s.select :level, options_from_collection_for_select(Speak::LEVELS, :to_s, :to_s, s.object.level) %>
+    <% unless s.object.new_record? %>
+      <%= s.label '_destroy' do %>
+        <%= s.check_box '_destroy' %> <%= "Supprimer" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit 'Ajouter une langue', class: "btn btn-small btn-secondary", :name => "add_speak" %>
+  <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
+<% end %>

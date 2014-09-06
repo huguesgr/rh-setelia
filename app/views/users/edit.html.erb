@@ -1,34 +1,7 @@
 <% provide(:title, "Edition") %>
 <h1><%= yield(:title) %></h1>
-
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :prénom %>
-      <%= f.text_field :first_name %>
-	  
-      <%= f.label :nom %>
-      <%= f.text_field :last_name %>
-
-      <%= f.label :"e-mail" %>
-      <%= f.text_field :email %>
-
-      <%= f.label :compétences %>
-      <div class="checkbox-list">
-        <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
-      </div>
-
-      <%= f.label :langues %>
-      <div class="checkbox-list">
-        <%= f.fields_for :speaks do |s| %>
-          <%= s.select :language_id, options_from_collection_for_select(Language.all, :id, :name, s.object.language_id) %>
-          <%= s.select :level, options_from_collection_for_select(Speak::LEVELS, :to_s, :to_s, s.object.level) %>
-        <% end %>
-      </div>
-
-      <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
