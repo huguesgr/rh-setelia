@@ -16,6 +16,8 @@ fr:
       skill: Compétence
       language: Langue
     attributes:
+      skill:
+        keyword: Libellé
       user:
         created_at: Ajouté le
         updated_at: Modifié le
