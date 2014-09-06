@@ -3,7 +3,7 @@
 <% if @user && @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      Le formulaire contient <%= pluralize(@user.errors.count, "erreur") %>.
+      <%= t('errors.template.header', :model=> User.model_name.human, :count=> @user.errors.count) %>
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
@@ -16,7 +16,7 @@
 <% if @admin && @admin.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      Le formulaire contient <%= pluralize(@admin.errors.count, "erreur") %>.
+      <%= t('errors.template.header', :model=> Admin.model_name.human, :count=> @user.errors.count) %>
     </div>
     <ul>
     <% @admin.errors.full_messages.each do |msg| %>

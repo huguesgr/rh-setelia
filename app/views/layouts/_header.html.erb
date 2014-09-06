@@ -1,31 +1,31 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
-		<%= link_to "Base de données - CV", '#', id: "logo" %>
+		<%= link_to "Base de données - C.V.", '#', id: "logo" %>
 		<nav>
 			<ul class="nav pull-right">
 				<li><%= link_to "Accueil", root_path %></li>
 				<% if signed_in? %>
 					<li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              C.V. <b class="caret"></b>
+              <%= User.model_name.human %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
 							<li><%= link_to "Liste", users_path %></li>
-							<li><%= link_to "Nouveau", new_user_path %></li>
+							<li><%= link_to "Ajouter", new_user_path %></li>
             </ul>
           </li>
 		      <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Compétences <b class="caret"></b>
+              <%= Skill.model_name.human.pluralize %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
 							<li><%= link_to "Liste", skills_path %></li>
-							<li><%= link_to "Nouveau", new_skill_path %></li>
+							<li><%= link_to "Ajouter", new_skill_path %></li>
             </ul>
           </li>
 					<li><%= link_to "Déconnexion", signout_path, method: "delete" %></li>
 				<% else %>
-					<li><%= link_to "Connexion", new_session_path %></li>
+					<li><%= link_to "Connexion", signin_path %></li>
 				<% end %>
 			</ul>
 		</nav>

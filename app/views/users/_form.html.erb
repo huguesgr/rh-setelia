@@ -35,7 +35,7 @@
     <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
   </div>
 
-  <%= f.label :langues %>
+  <%= f.label :speaks %>
   <%= f.fields_for :speaks do |s| %>
     <div>
     <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
@@ -47,6 +47,6 @@
     </div>
   <% end %>
 
-  <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
-  <%= f.submit 'Ajouter une langue', class: "btn btn-small btn-secondary", :name => "add_speak" %>
+  <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
+  <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-secondary", :name => "add_speak" %>
 <% end %>
