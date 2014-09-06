@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if params[:add_speak]
       unless params[:user][:speaks_attributes].blank?
         for attribute in params[:user][:speaks_attributes]
-          @user.speak.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
+          @user.speaks.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
         end
       end
       @user.speaks.build
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy])
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :contract, :availability, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy])
     end
 
 end

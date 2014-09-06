@@ -1,31 +1,52 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :first_name, "Prénom" %>
+  <%= f.label :first_name %>
   <%= f.text_field :first_name %>
 
-  <%= f.label :last_name, "Nom" %>
+  <%= f.label :last_name %>
   <%= f.text_field :last_name %>
 
-  <%= f.label :email, "E-mail" %>
+  <%= f.label :email %>
   <%= f.text_field :email %>
 
-  <%= f.label :skills, "Compétences" %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
+  <%= f.label :mobility %>
+  <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  <%= f.check_box :international_mobility, :class => "side-checkbox" %>
+  <%= f.label :international_mobility, :class => "side-checkbox" %>
+
+  <%= f.label :experience %>
+  <%= f.select :experience, User::EXPERIENCE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+
+  <%= f.label :salary %>
+  <%= f.select :salary, User::SALARY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+
+  <%= f.label :contract %>
+  <%= f.select :contract, User::CONTRACT.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+
+  <%= f.label :skills %>
   <div class="checkbox">
     <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
   </div>
 
   <%= f.label :langues %>
   <%= f.fields_for :speaks do |s| %>
-    <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id %>
-    <%= s.select :level, options_from_collection_for_select(Speak::LEVELS, :to_s, :to_s, s.object.level) %>
+    <div>
+    <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
+    <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
     <% unless s.object.new_record? %>
-      <%= s.label '_destroy' do %>
-        <%= s.check_box '_destroy' %> <%= "Supprimer" %>
-      <% end %>
+      <%= s.check_box :_destroy, :class => "side-checkbox" %>
+      <%= s.label :_destroy, :class => "side-checkbox" %>
     <% end %>
+    </div>
   <% end %>
 
-  <%= f.submit 'Ajouter une langue', class: "btn btn-small btn-secondary", :name => "add_speak" %>
   <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
+  <%= f.submit 'Ajouter une langue', class: "btn btn-small btn-secondary", :name => "add_speak" %>
 <% end %>

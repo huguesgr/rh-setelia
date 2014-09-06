@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904081431) do
+ActiveRecord::Schema.define(version: 20140906180057) do
 
   create_table "admins", force: true do |t|
     t.string   "login"
@@ -49,15 +49,23 @@ ActiveRecord::Schema.define(version: 20140904081431) do
     t.integer  "language_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "level"
+    t.integer  "level",       limit: 255
   end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "address"
+    t.string   "phone"
+    t.integer  "mobility"
+    t.boolean  "international_mobility"
+    t.integer  "experience"
+    t.integer  "salary"
+    t.integer  "contract"
+    t.boolean  "availability"
   end
 
 end

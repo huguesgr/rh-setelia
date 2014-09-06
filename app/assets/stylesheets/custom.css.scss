@@ -116,13 +116,15 @@ footer {
   @extend .error;
 }
 
-.checkbox-list input[type="checkbox"] {
-  display: inline-block;
-  width: 10%;
+select {
+  width: 150px;
 }
 
-.checkbox-list input[type="checkbox"] + label {
-  display: inline-block;
-  margin-left: 0%;
-  width: 90%;
+.side-checkbox {
+  vertical-align: baseline;
+}
+
+label.side-checkbox {
+  display: inline;
+  vertical-align: text-bottom;
 }

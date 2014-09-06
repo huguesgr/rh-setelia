@@ -7,10 +7,14 @@ class User < ActiveRecord::Base
   has_many :languages, through: :speaks
   has_many :speaks, dependent: :destroy
   accepts_nested_attributes_for :speaks, :allow_destroy => true
-
-  validates :first_name, presence: true
-  validates :last_name, presence: true
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  MOBILITY = ["Ile-de-France"]
+  EXPERIENCE = ["0-1 an"]
+  SALARY = ["30-32k"]
+  CONTRACT = ["CDI"]
 end
