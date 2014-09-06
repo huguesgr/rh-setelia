@@ -115,3 +115,14 @@ footer {
   @extend .control-group;
   @extend .error;
 }
+
+.checkbox-list input[type="checkbox"] {
+  display: inline-block;
+  width: 10%;
+}
+
+.checkbox-list input[type="checkbox"] + label {
+  display: inline-block;
+  margin-left: 0%;
+  width: 90%;
+}

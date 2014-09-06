@@ -16,23 +16,17 @@
       <%= f.text_field :email %>
 
       <%= f.label :compétences %>
-      <ul class="checkbox-list">
-        <% @skills.each do |skill| -%>
-          <li><%= check_box_tag :skill_ids, skill.id, @user.skills.include?(skill), :name => 'user[skill_ids][]' %> <%= skill.keyword %></li>
-        <% end -%>
-      </ul>
+      <div class="checkbox-list">
+        <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
+      </div>
 
       <%= f.label :langues %>
-      <%= :"see http://stackoverflow.com/questions/18686189/rails-4-not-updating-nested-attributes" %>
-      <ul class="checkbox-list">
-        <% @languages.each do |language| %>
-          <li>
-            <%= check_box_tag :language_id, language.id, @user.languages.include?(language), :name => 'user[language_ids][]' %> 
-            <%= language.name %>
-            <%= select_tag('user[speak_levels][]', options_for_select(language_levels)) %>
-          </li>
-        <% end -%>
-      </ul>
+      <div class="checkbox-list">
+        <%= f.fields_for :speaks do |s| %>
+          <%= s.select :language_id, options_from_collection_for_select(Language.all, :id, :name, s.object.language_id) %>
+          <%= s.select :level, options_from_collection_for_select(Speak::LEVELS, :to_s, :to_s, s.object.level) %>
+        <% end %>
+      </div>
 
       <%= f.submit "Sauvegarder", class: "btn btn-small btn-primary" %>
     <% end %>

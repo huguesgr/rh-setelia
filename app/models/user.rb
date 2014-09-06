@@ -6,16 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :languages, through: :speaks
   has_many :speaks, dependent: :destroy
-  accepts_nested_attributes_for :speaks
+  accepts_nested_attributes_for :speaks, :allow_destroy => true
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  
-  def language_level(language)
-    user_language = self.speaks.find_by_language_id(language.id)
-    language_level = user_language.level unless user_language.nil?
-  end
 end

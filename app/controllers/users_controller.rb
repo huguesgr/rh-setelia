@@ -23,12 +23,10 @@ class UsersController < ApplicationController
   end
   def edit
     @user = User.find(params[:id])
-    @skills = Skill.all
-    @languages = Language.all
   end  
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params) && @user.attributes = {'skill_ids' => []}.merge(params[:user] || {})
+    if @user.update_attributes(user_params)
       flash[:success] = "Utilisateur modifié."
       redirect_to @user
     else
@@ -39,7 +37,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email)
+      params.require(:user).permit(:first_name, :last_name, :email, skill_ids: [], speaks_attributes: [:id, :level, :language_id])
     end
 
 end
