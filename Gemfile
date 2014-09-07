@@ -11,6 +11,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bootstrap-navbar', '2.1.4'
 
 gem 'pg'
+gem 'rails_12factor'
 
 # Gems used only for assets and not required
 # in production environments by default.
