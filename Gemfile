@@ -1,24 +1,22 @@
 source 'https://rubygems.org'
+ruby "2.1.2"
 
 gem 'rails', '4.1.5'
-gem 'sprockets'
+
+gem 'sprockets', '2.11.0'
 gem 'will_paginate', '3.0.4'
 
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'bootstrap-navbar'
+gem 'bootstrap-navbar', '2.1.4'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
+gem 'sqlite3', '1.3.9'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
+  gem 'sass-rails', '4.0.3'
+  gem 'coffee-rails', '4.0.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -26,10 +24,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '3.1.1'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '3.1.7'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
