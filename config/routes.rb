@@ -1,4 +1,4 @@
-ResumeDatabase::Application.routes.draw do
+RhSetelia::Application.routes.draw do
   resources :users
   resources :admins
   resources :skills
