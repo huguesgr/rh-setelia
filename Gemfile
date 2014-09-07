@@ -10,7 +10,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bootstrap-navbar', '2.1.4'
 
-gem 'sqlite3', '1.3.9'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
