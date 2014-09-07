@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   end
   def new
     @user = User.new
-    2.times do 
-      @user.speaks.build
-    end
+    @user.speaks.build
+    @user.skills.build
   end
   def show
     @user = User.find(params[:id])
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :contract, :availability, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy])
+      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :contract, :availability, skill_ids: [], speaks_attributes: [:level, :language_id, :_destroy])
     end
 
 end
