@@ -1,0 +1,63 @@
+<%= search_form_for @q, url: "#{search_users_path}#result", html: { method: :post }, class: "form-horizontal" do |f| %>
+
+  <div class="control-group">
+  <%= f.label :last_name_or_first_name_cont, class: "control-label" %>
+  <div class="controls">
+  <%= f.search_field :last_name_or_first_name_cont %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :skills_id_eq, Skill.model_name.human.pluralize, class: "control-label" %>
+  <% Skill.all.each do |skill| %>
+    <div class="controls checkbox">
+    <%= check_box_tag('q[skills_id_eq_any][]', skill.id ) %>
+    <%= skill.keyword %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :mobility_eq, User.human_attribute_name(:mobility), class: "control-label" %>
+  <div class="controls">
+  <%= f.collection_select :mobility_eq, User::MOBILITY, :to_s, :to_s, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :international_mobility_gteq, User.human_attribute_name(:international_mobility), class: "control-label" %>
+  <div class="controls">
+  <%= f.check_box :international_mobility_gteq %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :experience_eq, User.human_attribute_name(:experience), class: "control-label" %>
+  <div class="controls">
+  <%= f.collection_select :experience_eq, User::EXPERIENCE, :to_s, :to_s, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :salary_eq, User.human_attribute_name(:salary), class: "control-label" %>
+  <div class="controls">
+  <%= f.collection_select :salary_eq, User::SALARY, :to_s, :to_s, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :contract_eq, User.human_attribute_name(:contract), class: "control-label" %>
+  <div class="controls">
+  <%= f.collection_select :contract_eq, User::CONTRACT, :to_s, :to_s, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :languages_name_cont, class: "control-label" %>
+  <div class="controls">
+  <%= f.search_field :languages_name_cont %>
+  </div>
+  </div>
+
+  <%= f.submit "Recherche", class: "btn btn-small btn-primary" %>
+<% end %>

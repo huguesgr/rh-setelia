@@ -1,53 +1,97 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: {class: 'form-horizontal' }) do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :first_name %>
+  <div class="control-group">
+  <%= f.label :first_name, class: "control-label" %>
+  <div class="controls">
   <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-
-  <%= f.label :mobility %>
-  <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
-  
-  <div class="checkbox">
-  <%= f.check_box :international_mobility %>
-  <%= f.label :international_mobility %>
+  </div>
   </div>
 
-  <%= f.label :experience %>
+  <div class="control-group">
+  <%= f.label :last_name,  class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :last_name %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :email, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :email %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :address, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :address %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :phone, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :phone %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :mobility, class: "control-label" %>
+  <div class="controls">
+  <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
+  
+  <div class="control-group">
+  <%= f.label :international_mobility, class: "control-label" %>
+  <div class="controls">
+  <%= f.check_box :international_mobility %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :experience, class: "control-label" %>
+  <div class="controls">
   <%= f.select :experience, User::EXPERIENCE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
 
-  <%= f.label :salary %>
+  <div class="control-group">
+  <%= f.label :salary, class: "control-label" %>
+  <div class="controls">
   <%= f.select :salary, User::SALARY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
 
-  <%= f.label :contract %>
+  <div class="control-group">
+  <%= f.label :contract, class: "control-label" %>
+  <div class="controls">
   <%= f.select :contract, User::CONTRACT.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
 
-  <%= f.label :skills, Skill.model_name.human.pluralize %>  
-  <div class="checkbox">
+  <div class="control-group">
+  <%= f.label :skills, Skill.model_name.human.pluralize, class: "control-label" %> 
+  <div class="controls checkbox">
   <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
   </div>
+  </div>
 
-  <%= f.label :speaks %>
+  <div class="control-group">
+  <%= f.label :speaks, Language.model_name.human.pluralize, class: "control-label" %>
   <%= f.fields_for :speaks do |s| %>
-    <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
-    <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
-      <% unless s.object.new_record? %>
-        <%= s.check_box :_destroy %>
-        <%= s.label :_destroy, style: "display:inline;" %>
-      <% end %>
+    <div class="controls">
+      <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
+      <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
+        <% unless s.object.new_record? %>
+          <%= s.check_box :_destroy %>
+          <%= s.label :_destroy, style: "display:inline;" %>
+        <% end %>
+    </div>
   <% end %>
+  </div>
 
   <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
-  <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-secondary", :name => "add_speak" %>
+  <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
 <% end %>

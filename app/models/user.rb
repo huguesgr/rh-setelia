@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
   MOBILITY = ["Ile-de-France"]
   EXPERIENCE = ["0-1 an"]
   SALARY = ["30-32k"]
-  CONTRACT = ["CDI"]
+  CONTRACT = ["CDI", "CDD", "Freelance"]
 end
