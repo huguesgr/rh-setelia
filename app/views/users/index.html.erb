@@ -1,9 +1,14 @@
 <% provide(:title, 'Liste de C.V.') %>
 
-<%= will_paginate %>
-
 <ul class="users">
-  <%= render @users %>
-</ul>
 
-<%= will_paginate %>
+  <%= search_form_for @q, url: search_users_path, html: { method: :post } do |f| %>
+    <%= f.label :last_name_or_first_name_cont %>
+    <%= f.search_field :last_name_or_first_name_cont %>
+
+    <% f.submit %>
+  <% end %>
+
+  <%= render @users %>
+
+</ul>
