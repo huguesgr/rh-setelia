@@ -13,7 +13,7 @@
       <% attr_value=User::SALARY[attr_value] %>
     <% when "contract" %>
       <% attr_value=User::CONTRACT[attr_value] %>
-    <% when "international_mobility", "created_at", "updated_at" %>
+    <% when "international_mobility" %>
       <% attr_value=t(attr_value.to_s) %>
   <% end %>
   <p>

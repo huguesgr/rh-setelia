@@ -1,14 +1,46 @@
 <% provide(:title, 'Liste de C.V.') %>
 
-<ul class="users">
+<div class="row">
+  <div class="span6 offset3">
 
-  <%= search_form_for @q, url: search_users_path, html: { method: :post } do |f| %>
-    <%= f.label :last_name_or_first_name_cont %>
-    <%= f.search_field :last_name_or_first_name_cont %>
+  <%= search_form_for @q, url: search_users_path, html: { method: :post }, class: "form-horizontal search" do |f| %>
 
-    <% f.submit %>
+      <%= f.label :last_name_or_first_name_cont %>
+      <%= f.search_field :last_name_or_first_name_cont %>
+
+      <%= f.label :skills_id_eq %>
+      <% Skill.all.each do |skill| %>
+        <div class="checkbox">
+        <%= check_box_tag('q[skills_id_eq_any][]', skill.id ) %>
+        <%= skill.keyword %>
+        </div>
+      <% end %>
+
+      <%= f.label :mobility_eq %>
+      <%= f.collection_select :mobility_eq, User::MOBILITY, :to_s, :to_s, include_blank: true %>
+
+      <div class="checkbox">
+      <%= f.check_box :international_mobility_gteq %>
+      <%= f.label :international_mobility_gteq, t('activerecord.attributes.user.international_mobility') %>
+      </div>
+
+      <%= f.label :experience_eq %>
+      <%= f.collection_select :experience_eq, User::EXPERIENCE, :to_s, :to_s, include_blank: true %>
+
+      <%= f.label :salary_eq %>
+      <%= f.collection_select :salary_eq, User::SALARY, :to_s, :to_s, include_blank: true %>
+
+      <%= f.label :contract_eq %>
+      <%= f.collection_select :contract_eq, User::CONTRACT, :to_s, :to_s, include_blank: true %>
+
+      <%= f.label :languages_name_cont %>
+      <%= f.search_field :languages_name_cont %>
+    
+      <%= f.submit "Recherche", class: "btn btn-small btn-primary" %>
   <% end %>
 
+  <br>
   <%= render @users %>
 
-</ul>
+  </div>
+</div>

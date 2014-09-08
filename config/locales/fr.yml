@@ -13,25 +13,31 @@ fr:
     models:
       user: C.V.
       admin: Administrateur
-      skill: Compétence
       language: Langue
+      skill: Compétence
     attributes:
+      language:
+        name: parlée
       skill:
-        keyword: Libellé
+        id: connue
+        keyword: libellé
       user:
         created_at: Ajouté le
         updated_at: Modifié le
         first_name: Prénom
         last_name: Nom
+        address: Adresse
         email: E-mail
         phone: Téléphone
         mobility: Mobilité
-        international_mobility: International
+        international_mobility: Mobilité internationale
         experience: Expérience
         salary: Rémunération
         contract: Contrat
       user/speaks:
         level: Niveau de langue
+
+
 
   date:
     abbr_day_names:

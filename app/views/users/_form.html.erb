@@ -18,8 +18,11 @@
 
   <%= f.label :mobility %>
   <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
-  <%= f.check_box :international_mobility, :class => "side-checkbox" %>
-  <%= f.label :international_mobility, :class => "side-checkbox" %>
+  
+  <div class="checkbox">
+  <%= f.check_box :international_mobility %>
+  <%= f.label :international_mobility %>
+  </div>
 
   <%= f.label :experience %>
   <%= f.select :experience, User::EXPERIENCE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
@@ -30,21 +33,19 @@
   <%= f.label :contract %>
   <%= f.select :contract, User::CONTRACT.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
 
-  <%= f.label :skills %>
+  <%= f.label :skills, Skill.model_name.human.pluralize %>  
   <div class="checkbox">
-    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
+  <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
   </div>
 
   <%= f.label :speaks %>
   <%= f.fields_for :speaks do |s| %>
-    <div>
     <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
     <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
-    <% unless s.object.new_record? %>
-      <%= s.check_box :_destroy, :class => "side-checkbox" %>
-      <%= s.label :_destroy, :class => "side-checkbox" %>
-    <% end %>
-    </div>
+      <% unless s.object.new_record? %>
+        <%= s.check_box :_destroy %>
+        <%= s.label :_destroy, style: "display:inline;" %>
+      <% end %>
   <% end %>
 
   <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
