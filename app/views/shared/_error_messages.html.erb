@@ -25,3 +25,16 @@
     </ul>
   </div>
 <% end %>
+
+<% if @skill && @skill.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      <%= t('errors.template.header', :model=> Skill.model_name.human, :count=> @user.errors.count) %>
+    </div>
+    <ul>
+    <% @skill.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
