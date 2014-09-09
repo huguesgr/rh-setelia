@@ -11,8 +11,10 @@
   <%= f.label :skills_id_eq, Skill.model_name.human.pluralize, class: "control-label" %>
   <% Skill.all.each do |skill| %>
     <div class="controls checkbox">
-    <%= check_box_tag('q[skills_id_eq_any][]', skill.id ) %>
-    <%= skill.keyword %>
+      <label class="category-select">
+        <%= check_box_tag('q[skills_id_eq_any][]', skill.id ) %>
+        <%= skill.keyword %>
+      </label>
     </div>
   <% end %>
   </div>
