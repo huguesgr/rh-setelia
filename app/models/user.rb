@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  default_scope { order('last_name') } 
 
   has_many :skills, through: :proficiencies
   has_many :proficiencies, dependent: :destroy
