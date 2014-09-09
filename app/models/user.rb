@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_save { self.first_name = first_name.titleize }
   before_save { self.last_name = last_name.upcase }
+  phony_normalize :phone, :default_country_code => 'FR'
   
   default_scope { order('last_name') } 
 
@@ -16,6 +17,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :phone, :phony_plausible => true
 
   MOBILITY = ["Ile-de-France", "France"]
   EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]

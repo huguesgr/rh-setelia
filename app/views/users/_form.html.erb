@@ -92,11 +92,10 @@
   <% end %>
   </div>
 
-  <div class="side-button">
-    <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
-    <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
-  </div>
-  <% unless @user.new_record? %>
-    <%= button_to "Supprimer", @user, method: :delete, data: { confirm: "Supprimer ?" }, title: @user.last_name, class: "btn btn-small btn-danger" %>
-  <% end %>
+  <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
+  <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
+<% end %>
+
+<% unless @user.new_record? %>
+  <%= button_to "Supprimer", @user, method: :delete, data: { confirm: "Supprimer ?" }, title: @user.last_name, class: "btn btn-small btn-danger btn-delete" %>
 <% end %>

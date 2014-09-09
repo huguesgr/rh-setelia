@@ -6,10 +6,9 @@
     <%= f.text_field :keyword %>
   </div>
 
-  <div class="side-button">
-    <%= f.submit t('helpers.submit.submit', :model=> Skill.model_name.human), class: "btn btn-small btn-primary" %>
-  </div>
-  <% unless @skill.new_record? %>
-    <%= button_to "Supprimer", @skill, method: :delete, data: { confirm: "Supprimer ?" }, title: @skill.keyword, class: "btn btn-small btn-danger" %>
-  <% end %>
+  <%= f.submit t('helpers.submit.submit', :model=> Skill.model_name.human), class: "btn btn-small btn-primary" %>
+<% end %>
+
+<% unless @skill.new_record? %>
+  <%= button_to "Supprimer", @skill, method: :delete, data: { confirm: "Supprimer ?" }, title: @skill.keyword, class: "btn btn-small btn-danger btn-delete" %>
 <% end %>
