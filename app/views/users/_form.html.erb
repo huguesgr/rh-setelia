@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', obj: @user %>
 
   <div class="control-group">
-  <%= f.label :first_name, class: "control-label" %>
+  <%= f.label :first_name, class: "control-label col-sm-2" %>
   <div class="controls">
   <%= f.text_field :first_name %>
   </div>
@@ -86,14 +86,18 @@
       <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
         <% unless s.object.new_record? %>
           <%= s.check_box :_destroy %>
-          <%= s.label :_destroy, style: "display:inline;" %>
+          <%= s.label :_destroy, t(:destroy), style: "display:inline;" %>
         <% end %>
     </div>
   <% end %>
   </div>
 
+  <div class="control-group">
+  <div class="controls">
   <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
   <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
+  </div>
+  </div>
 <% end %>
 
 <% unless @user.new_record? %>

@@ -123,3 +123,11 @@ select {
 .btn-delete {
   margin-top: -30px;
 }
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+
+  display: inline-block;
+  float: left;
+}

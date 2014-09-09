@@ -9,6 +9,7 @@
 fr:
   "false": non
   "true": oui
+  "destroy": supprimer
   activerecord:
     models:
       user: C.V.

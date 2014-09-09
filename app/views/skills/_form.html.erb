@@ -1,12 +1,18 @@
-<%= form_for(@skill) do |f| %>
+<%= form_for(@skill, html: {class: 'form-horizontal' }) do |f| %>
   <%= render 'shared/error_messages', obj: @skill %>
 
-  <div>
-    <%= f.label :keyword %>
+  <div class="control-group">
+    <%= f.label :keyword, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :keyword %>
+    </div>
   </div>
 
+  <div class="control-group">
+  <div class="controls">
   <%= f.submit t('helpers.submit.submit', :model=> Skill.model_name.human), class: "btn btn-small btn-primary" %>
+  </div>
+  </div>
 <% end %>
 
 <% unless @skill.new_record? %>
