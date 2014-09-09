@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
   def index
     @q = User.search(params[:q])
-    @users = @q.result.includes(:skills)
+    @users = @q.result(distinct: true).includes(:skills)
   end
   def search
     index
