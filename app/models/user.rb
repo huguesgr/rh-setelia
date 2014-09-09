@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  before_save { self.first_name = first_name.titleize }
+  before_save { self.last_name = last_name.upcase }
+  
   default_scope { order('last_name') } 
 
   has_many :skills, through: :proficiencies
