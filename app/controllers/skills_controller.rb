@@ -4,8 +4,8 @@ class SkillsController < ApplicationController
   def create
     @skill = Skill.new(skill_params)
     if @skill.save
-      flash[:success] = "Skill ajouté."
-      redirect_to @skill
+      flash[:success] = "#{Skill.model_name.human} ajoutée."
+      redirect_to skills_path
     else
       render 'new'
     end
@@ -25,11 +25,17 @@ class SkillsController < ApplicationController
   def update
     @skill = Skill.find(params[:id])
     if @skill.update_attributes(skill_params)
-      flash[:success] = "Compétence modifiée."
-      redirect_to @skill
+      flash[:success] = "#{Skill.model_name.human} modifiée."
+      redirect_to skills_path
     else
       render 'edit'
     end
+  end
+  def destroy    
+    @skill = Skill.find(params[:id])
+    @skill.destroy
+    flash[:success] = "#{Skill.model_name.human} supprimée."
+    redirect_to skills_path
   end
 
   private

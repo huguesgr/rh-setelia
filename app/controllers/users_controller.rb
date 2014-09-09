@@ -52,6 +52,12 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  def destroy    
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "#{User.model_name.human} supprimé."
+    redirect_to users_path
+  end
   
   private
   
