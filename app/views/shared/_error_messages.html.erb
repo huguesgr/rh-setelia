@@ -1,38 +1,10 @@
-<%-# This needs to be fixed: was not able use only one block for both admin and users...-%>
-
-<% if @user && @user.errors.any? %>
+<% if obj.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      <%= t('errors.template.header', :model=> User.model_name.human, :count=> @user.errors.count) %>
+      <%= t('errors.template.header', :model=> obj.class.model_name.human, :count=> obj.errors.count) %>
     </div>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<% if @admin && @admin.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      <%= t('errors.template.header', :model=> Admin.model_name.human, :count=> @admin.errors.count) %>
-    </div>
-    <ul>
-    <% @admin.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<% if @skill && @skill.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      <%= t('errors.template.header', :model=> Skill.model_name.human, :count=> @skill.errors.count) %>
-    </div>
-    <ul>
-    <% @skill.errors.full_messages.each do |msg| %>
+    <% obj.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>

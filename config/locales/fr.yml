@@ -12,9 +12,9 @@ fr:
   activerecord:
     models:
       user: C.V.
-      admin: Administrateur
-      language: Langue
-      skill: Compétence
+      admin: administrateur
+      language: langue
+      skill: compétence
     attributes:
       language:
         name: parlée
@@ -22,20 +22,20 @@ fr:
         id: connue
         keyword: libellé
       user:
-        created_at: Ajouté le
-        updated_at: Modifié le
-        first_name: Prénom
-        last_name: Nom
-        address: Adresse
-        email: E-mail
-        phone: Téléphone
-        mobility: Mobilité
-        international_mobility: Mobilité internationale
-        experience: Expérience
-        salary: Rémunération
-        contract: Contrat
+        created_at: ajouté le
+        updated_at: modifié le
+        first_name: prénom
+        last_name: nom
+        address: adresse
+        email: e-mail
+        phone: téléphone
+        mobility: mobilité
+        international_mobility: mobilité internationale
+        experience: expérience
+        salary: rémunération
+        contract: contrat
       user/speaks:
-        level: Niveau de langue
+        level: niveau de langue
 
 
 
