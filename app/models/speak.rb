@@ -4,5 +4,5 @@ class Speak < ActiveRecord::Base
 
   validates :level, presence: true
 
-  LEVELS=["Courant", "Débutant"]
+  LEVELS=["Débutant", "Intermédiaire", "Avancé", "Courant"]
 end

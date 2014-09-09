@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  MOBILITY = ["Ile-de-France"]
-  EXPERIENCE = ["0-1 an"]
-  SALARY = ["30-32k"]
-  CONTRACT = ["CDI", "CDD", "Freelance"]
+  MOBILITY = ["Ile-de-France", "France"]
+  EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]
+  SALARY = ["Moins de 30k", "30-35k", "35-40k", "40-45k", "45-50k", "50-55k", "55-60k", "60-65k", "65-70k", "Plus de 70k"]
+  CONTRACT = ["CDD", "CDI", "Freelance", "Stage"]
 end
