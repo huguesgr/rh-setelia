@@ -16,7 +16,7 @@
 <% if @admin && @admin.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      <%= t('errors.template.header', :model=> Admin.model_name.human, :count=> @user.errors.count) %>
+      <%= t('errors.template.header', :model=> Admin.model_name.human, :count=> @admin.errors.count) %>
     </div>
     <ul>
     <% @admin.errors.full_messages.each do |msg| %>
@@ -29,7 +29,7 @@
 <% if @skill && @skill.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      <%= t('errors.template.header', :model=> Skill.model_name.human, :count=> @user.errors.count) %>
+      <%= t('errors.template.header', :model=> Skill.model_name.human, :count=> @skill.errors.count) %>
     </div>
     <ul>
     <% @skill.errors.full_messages.each do |msg| %>
