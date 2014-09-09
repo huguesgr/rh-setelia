@@ -120,10 +120,6 @@ select {
   width: 150px;
 }
 
-.btn-delete {
-  margin-top: -30px;
-}
-
 .field_with_errors {
   @extend .control-group;
   @extend .error;
