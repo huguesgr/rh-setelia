@@ -3,9 +3,6 @@
 <div class="row">
   <div class="span6 offset3">
 
-  <%= render 'search' %>
-  
-  <a name="result"></a>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -16,6 +13,8 @@
     </thead>
   <%= render @users %>
   </table>
+
+  <%= will_paginate @users %>
 
   </div>
 </div>

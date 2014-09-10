@@ -10,8 +10,9 @@
               <%= User.model_name.human %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-							<li><%= link_to "Liste", users_path %></li>
+              <li><%= link_to "Liste", users_path %></li>
               <li><%= link_to "Ajouter", new_user_path %></li>
+							<li><%= link_to "Recherche", search_users_path %></li>
               <li><%= link_to "Compétences", skills_path %></li>
             </ul>
           </li>

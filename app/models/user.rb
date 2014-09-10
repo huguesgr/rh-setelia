@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   before_save { self.last_name = last_name.upcase }
   phony_normalize :phone, :default_country_code => 'FR'
   
-  default_scope { order('last_name') } 
-
   has_many :skills, through: :proficiencies
   has_many :proficiencies, dependent: :destroy
 
