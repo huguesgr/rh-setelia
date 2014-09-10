@@ -1,14 +1,15 @@
 RhSetelia::Application.routes.draw do
-
   resources :users do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
+    resources :events
   end
   resources :admins
   resources :skills
   resources :categories
   resources :languages
+  resources :events
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/home'     => 'static_pages#home',    via: 'get'

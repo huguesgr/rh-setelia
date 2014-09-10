@@ -17,6 +17,7 @@ fr:
       language: langue
       skill: compétence
       category: catégorie
+      event: événement
     attributes:
       category:
         name: libellé

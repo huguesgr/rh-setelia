@@ -40,6 +40,20 @@
   </ol>
 </p>
 
+<p>
+  <b>Historique :</b>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td><%= Event.human_attribute_name(:description) %></td>
+        <td><%= Event.human_attribute_name(:date) %></td>
+      </tr>
+    </thead>
+  <%= render @events %>
+  </table>
+</p>
 
+
+<%= link_to 'Ajout événement', new_user_event_path(@user) %> |
 <%= link_to 'Edition', edit_user_path(@user) %> |
 <%= link_to 'Retour', users_path %>

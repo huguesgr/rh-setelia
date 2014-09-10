@@ -30,6 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @skills = @user.skills.all
     @speaks = @user.speaks.all
+    @events = @user.events.all
   end
   def edit
     @user = User.find(params[:id])

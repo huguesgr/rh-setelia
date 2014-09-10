@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :languages, through: :speaks
   has_many :speaks, dependent: :destroy
   accepts_nested_attributes_for :speaks, :allow_destroy => true
+
+  has_many :events, dependent: :destroy
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }

@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <%= link_to event.description, edit_event_path(event) %>
+  </td>
+  <td>
+    <%= event.date.strftime("%d/%m/%Y") %>
+  </td>
+</tr>

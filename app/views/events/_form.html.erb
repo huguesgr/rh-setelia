@@ -1,0 +1,33 @@
+<%= form_for [@user, @event], html: {class: 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages', obj: @event %>
+
+  <div class="control-group">
+    <%= f.label :description, class: "control-label" %>
+    <div class="controls">
+    <%= f.text_field :description %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :date, class: "control-label" %>
+    <div class="controls">
+    <%= f.date_field :date %>
+    </div>
+  </div>
+
+  <div class="control-group">
+  <div class="controls">
+  <%= f.submit t('helpers.submit.submit', :model=> Event.model_name.human), class: "btn btn-small btn-primary" %>
+  </div>
+  </div>
+<% end %>
+
+<div class="form-horizontal">
+<div class="control-group">
+<div class="controls">
+<% unless @event.new_record? %>
+  <%= button_to "Supprimer", @event, method: :delete, data: { confirm: "Supprimer ?" }, title: @event.description, class: "btn btn-small btn-danger" %>
+<% end %>
+</div>
+</div>
+</div>
