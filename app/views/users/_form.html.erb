@@ -37,6 +37,13 @@
   </div>
 
   <div class="control-group">
+  <%= f.label :availability, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :availability %>
+  </div>
+  </div>
+
+  <div class="control-group">
   <%= f.label :mobility, class: "control-label" %>
   <div class="controls">
   <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
@@ -90,6 +97,27 @@
         <% end %>
     </div>
   <% end %>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :comment, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_area :comment %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :interview_result, class: "control-label" %>
+  <div class="controls">
+  <%= f.select :interview_result, User::INTERVIEW_RESULT.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :interview_state, class: "control-label" %>
+  <div class="controls">
+  <%= f.select :interview_state, User::INTERVIEW_STATE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
   </div>
 
   <div class="control-group">

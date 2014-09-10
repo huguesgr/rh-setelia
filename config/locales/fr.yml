@@ -35,6 +35,10 @@ fr:
         experience: expérience
         salary: rémunération
         contract: contrat
+        interview_result: résultat d'entretien
+        interview_state: état de la candidature
+        comment: commentaire
+        availability: disponibilité
       user/speaks:
         level: niveau de langue
 

@@ -8,11 +8,11 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :skills_id_eq, class: "control-label" %>
-  <% Skill.all.each do |skill| %>
+  <%= f.label :skills_id_eq_any, class: "control-label" %>
+  <% Skill.all.each_with_index do |skill, index| %>
     <div class="controls checkbox">
       <label class="category-select">
-        <%= check_box_tag('q[skills_id_eq_any][]', skill.id ) %>
+        <%= check_box_tag('q[skills_id_eq_any][]', skill.id) %>
         <%= skill.keyword %>
       </label>
     </div>
@@ -55,9 +55,23 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :languages_name_cont, class: "control-label" %>
+  <%= f.label :interview_result_eq, User.human_attribute_name(:interview_result), class: "control-label" %>
   <div class="controls">
-  <%= f.search_field :languages_name_cont %>
+  <%= f.select :interview_result_eq, User::INTERVIEW_RESULT.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :interview_state_eq, User.human_attribute_name(:interview_state), class: "control-label" %>
+  <div class="controls">
+  <%= f.select :interview_state_eq, User::INTERVIEW_STATE.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :languages_id_eq, Language.model_name.human, class: "control-label" %>
+  <div class="controls">
+  <%= f.select :languages_id_eq, Language.all.collect {|p| [ p.name, p.id ] }, include_blank: true %>
   </div>
   </div>
 
