@@ -9,13 +9,18 @@
 
   <div class="control-group">
   <%= f.label :skills_id_eq_any, class: "control-label" %>
-  <% Skill.all.each_with_index do |skill, index| %>
+  <% Category.all.each do |cat| %>
     <div class="controls checkbox">
-      <label class="category-select">
-        <%= check_box_tag('q[skills_id_eq_any][]', skill.id) %>
-        <%= skill.keyword %>
-      </label>
+    <b><%= cat.name %></b>
     </div>
+    <% Skill.all.where(category: cat).each_with_index do |skill, index| %>
+      <div class="controls checkbox">
+        <label class="category-select">
+          <%= check_box_tag('q[skills_id_eq_any][]', skill.id) %>
+          <%= skill.keyword %>
+        </label>
+      </div>
+    <% end %>
   <% end %>
   </div>
 

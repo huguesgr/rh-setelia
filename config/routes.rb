@@ -1,4 +1,5 @@
 RhSetelia::Application.routes.draw do
+
   resources :users do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
@@ -6,6 +7,7 @@ RhSetelia::Application.routes.draw do
   end
   resources :admins
   resources :skills
+  resources :categories
   resources :languages
   resources :sessions, only: [:new, :create, :destroy]
 

@@ -3,6 +3,8 @@ class Skill < ActiveRecord::Base
 
 	has_many :users, through: :proficiencies
 	has_many :proficiencies, dependent: :destroy
-
+  belongs_to :category
+  
   validates :keyword, presence: true, uniqueness: true
+  validates :category, presence: true
 end

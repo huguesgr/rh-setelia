@@ -16,7 +16,10 @@ fr:
       admin: administrateur
       language: langue
       skill: compétence
+      category: catégorie
     attributes:
+      category:
+        name: libellé
       language:
         name: parlée
       skill:

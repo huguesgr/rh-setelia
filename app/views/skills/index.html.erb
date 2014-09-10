@@ -1,7 +1,11 @@
 <% provide(:title, 'Compétences') %>
 
-<ul class="skills">
-  <%= render @skills %>
-</ul>
+<% Category.all.each do |cat| %>
+  <%= render 'categories/category', :category => cat %>
+  <ul class="skills">
+    <%= render @skills.where(category: cat) %>
+  </ul>
+<% end %>
 
-<%= link_to "Ajout", new_skill_path %>
+<%= link_to "Ajout", new_skill_path %> -
+<%= link_to "Catégories", new_category_path %>

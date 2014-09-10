@@ -81,7 +81,10 @@
   <div class="control-group">
   <%= f.label :skills, Skill.model_name.human.pluralize, class: "control-label" %> 
   <div class="controls checkbox">
-  <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :keyword %>
+  <% Category.all.each do |cat| %>
+    <b><%= cat.name %></b>
+    <%= f.collection_check_boxes :skill_ids, Skill.all.where(category: cat), :id, :keyword %>
+  <% end %>
   </div>
   </div>
 

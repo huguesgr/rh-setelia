@@ -41,6 +41,6 @@ class SkillsController < ApplicationController
   private
   
     def skill_params
-      params.require(:skill).permit(:keyword)
+      params.require(:skill).permit(:keyword, :category_id)
     end
 end

@@ -2,6 +2,12 @@
   <%= render 'shared/error_messages', obj: @skill %>
 
   <div class="control-group">
+    <%= f.label :category_id, class: "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true) %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :keyword, class: "control-label" %>
     <div class="controls">
     <%= f.text_field :keyword %>
