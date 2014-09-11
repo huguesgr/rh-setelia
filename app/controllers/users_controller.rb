@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
   def new
     @user = User.new
-    @user.speaks.build
     @user.skills.build
   end
   def show

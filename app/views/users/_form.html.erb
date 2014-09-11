@@ -99,7 +99,11 @@
           <%= s.label :_destroy, t(:destroy), style: "display:inline;" %>
         <% end %>
     </div>
+    <br>
   <% end %>
+    <div class="controls">
+      <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
+    </div>
   </div>
 
   <div class="control-group">
@@ -126,7 +130,6 @@
   <div class="control-group">
   <div class="controls">
   <%= f.submit t('helpers.submit.submit', :model=> User.model_name.human), class: "btn btn-small btn-primary" %>
-  <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
   </div>
   </div>
 <% end %>
