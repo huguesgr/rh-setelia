@@ -17,8 +17,12 @@ class UsersController < ApplicationController
     @users = User.all.paginate(:page => params[:page])
   end
   def search
-    @q = User.search(params[:q])
-    @users = @q.result(distinct: true).includes(:skills)
+    if params[:inclusive]
+      @q = User.with_all_skills(params[:q]).search(params[:q])
+    else
+      @q = User.search(params[:q])
+    end
+    @users = @q.result(distinct: true)
   end
   def new
     @user = User.new
@@ -57,7 +61,7 @@ class UsersController < ApplicationController
     flash[:success] = "#{User.model_name.human} supprimé."
     redirect_to users_path
   end
-  
+
   private
   
     def user_params

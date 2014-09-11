@@ -25,4 +25,14 @@ class User < ActiveRecord::Base
   CONTRACT = ["CDD", "CDI", "Freelance", "Stage"]
   INTERVIEW_RESULT = ["Top", "OK", "NOK"]
   INTERVIEW_STATE = ["Contacté", "1er entretien", "2ème entretien", "Présenté aux clients", "Salarié", "Ancien salairé"]
+
+
+  def self.with_all_skills(q)
+    array = q[:skills_id_eq_any] unless q.nil?
+    if array.nil?
+      select('users.*').joins(:skills)
+    else
+      select('users.*').joins(:skills).where('skills.id' => array).group("users." + User.column_names.join(', users.')).having("count(*) = #{array.size}")
+    end
+  end
 end
