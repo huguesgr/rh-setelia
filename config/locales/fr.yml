@@ -17,6 +17,8 @@ fr:
           attributes:
             attachment:
               spoofed_media_type: (tentative de spoofing)
+            attachment_file_name:
+              invalid: (format invalide)
     models:
       user: C.V.
       admin: administrateur
