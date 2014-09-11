@@ -12,12 +12,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :speaks, :allow_destroy => true
 
   has_many :events, dependent: :destroy
+  has_attached_file :attachment
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, :phony_plausible => true
+  validates_attachment_file_name :attachment, :matches => [/pdf\Z/]
 
   MOBILITY = ["Ile-de-France", "France"]
   EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]

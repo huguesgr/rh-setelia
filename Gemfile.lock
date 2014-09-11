@@ -36,6 +36,10 @@ GEM
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.2.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -61,6 +65,11 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.1)
     multi_json (1.10.1)
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     phony (2.2.16)
     phony_rails (0.6.2)
@@ -138,6 +147,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.9)
   coffee-rails (= 4.0.1)
   jquery-rails (= 3.1.1)
+  paperclip (~> 4.2)
   pg
   phony_rails
   rails (= 4.1.5)

@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :contract, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy])
+      params.require(:user).permit(:attachment, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :contract, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy])
     end
 
 end

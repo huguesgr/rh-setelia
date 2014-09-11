@@ -1,4 +1,4 @@
-<%= form_for(@user, html: {class: 'form-horizontal' }) do |f| %>
+<%= form_for(@user, html: { :multipart => true, class: 'form-horizontal' }) do |f| %>
   <%= render 'shared/error_messages', obj: @user %>
 
   <div class="control-group">
@@ -124,6 +124,13 @@
   <%= f.label :interview_state, class: "control-label" %>
   <div class="controls">
   <%= f.select :interview_state, User::INTERVIEW_STATE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :attachment, class: "control-label" %>
+  <div class="controls">
+  <%= f.file_field :attachment %>
   </div>
   </div>
 

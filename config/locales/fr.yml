@@ -11,6 +11,12 @@ fr:
   "true": oui
   "destroy": supprimer
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            attachment:
+              spoofed_media_type: (tentative de spoofing)
     models:
       user: C.V.
       admin: administrateur
@@ -27,6 +33,8 @@ fr:
         id: connue
         keyword: libellé
       user:
+        attachment: pièce jointe
+        attachment_file_name: format de la pièce jointe
         created_at: ajouté le
         updated_at: modifié le
         first_name: prénom
@@ -146,7 +154,6 @@ fr:
       month:  "Mois"
       second: "Seconde"
       year:   "Année"
-  errors:
     format: "%{attribute} %{message}"
     messages: &errors_messages
       accepted: "doit être accepté(e)"
