@@ -80,12 +80,24 @@
 
   <div class="control-group">
   <%= f.label :skills, Skill.model_name.human.pluralize, class: "control-label" %> 
-  <div class="controls checkbox">
-  <% Category.all.each do |cat| %>
-    <b><%= cat.name %></b><br>
-    <%= f.collection_check_boxes :skill_ids, Skill.all.where(category: cat), :id, :keyword %>
-  <% end %>
-  </div>
+    <div class="controls checkbox skills-collapse">
+      <div class="accordion" id="accordion">
+        <% Category.all.each do |cat| %>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= cat.id %>">
+                <%= cat.name %>
+              </a>
+            </div>
+            <div id="collapse<%= cat.id %>" class="accordion-body collapse">
+              <div class="accordion-inner skills-collapse-inner">
+                <%= f.collection_check_boxes :skill_ids, Skill.all.where(category: cat), :id, :keyword %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="control-group">

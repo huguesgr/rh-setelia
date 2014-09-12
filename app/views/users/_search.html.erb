@@ -9,23 +9,33 @@
 
   <div class="control-group">
   <%= f.label :skills_id, class: "control-label" %>
-  <div class="controls checkbox">
-    <%= check_box_tag :inclusive %>
-    <%= label_tag :inclusive, "inclusif", class: "additional_checkbox" %>
-  </div>
-  <% Category.all.each do |cat| %>
     <div class="controls checkbox">
-      <b><%= cat.name %></b>
+      <%= check_box_tag :inclusive %>
+      <%= label_tag :inclusive, "inclusif", class: "additional_checkbox" %>
     </div>
-    <% Skill.all.where(category: cat).each do |skill| %>
-      <div class="controls checkbox">
-        <label class="category-select">
-          <%= check_box_tag("q[skills_id_eq_any][]", skill.id) %>
-          <%= skill.keyword %>
-        </label>
+    <div class="controls checkbox skills-collapse">
+      <div class="accordion" id="accordion">
+        <% Category.all.each do |cat| %>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= cat.id %>">
+                <%= cat.name %>
+              </a>
+            </div>
+            <div id="collapse<%= cat.id %>" class="accordion-body collapse">
+              <div class="accordion-inner skills-collapse-inner">
+                <% Skill.all.where(category: cat).each do |skill| %>
+                  <label class="category-select">
+                    <%= check_box_tag("q[skills_id_eq_any][]", skill.id) %>
+                    <%= skill.keyword %>
+                  </label>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
   </div>
 
   <div class="control-group">
