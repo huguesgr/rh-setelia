@@ -4,11 +4,11 @@
     <%= link_to "Ressources Humaines".html_safe, '#', id: "logo" %>
 		<nav>
 			<ul class="nav pull-right">
-				<li><%= link_to "Accueil", root_path %></li>
+				<li><%= link_to "<i class='icon-home icon-white' title='accueil'></i>".html_safe, root_path %></li>
 				<% if signed_in? %>
 					<li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= User.model_name.human %> <b class="caret"></b>
+              <i class='icon-folder-open icon-white' title='C.V.'></i> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "<i class='icon-th-list'></i> Liste".html_safe, users_path %></li>
@@ -18,7 +18,7 @@
               <li><%= link_to "<i class='icon-star'></i> Compétences".html_safe, skills_path %></li>
             </ul>
           </li>
-					<li><%= link_to "Déconnexion", signout_path, method: "delete" %></li>
+					<li><%= link_to "<i class='icon-off icon-white' title='déconnexion'></i>".html_safe, signout_path, method: "delete" %></li>
 				<% else %>
 					<li><%= link_to "Connexion", signin_path %></li>
 				<% end %>
