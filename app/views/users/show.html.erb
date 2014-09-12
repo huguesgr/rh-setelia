@@ -33,34 +33,39 @@
   </p>
 <% end %>
 
-<p>
-  <b>Compétences :</b>
-  <ol class="skills">
-    <%= render @skills %>
-  </ol>
-</p>
+<% unless @skills.empty? %>
+  <p>
+    <b>Compétences :</b>
+    <ol class="skills">
+      <%= render @skills %>
+    </ol>
+  </p>
+<% end %>
 
-<p>
-  <b>Langues :</b>
-  <ol class="speaks">
-    <%= render @speaks %>
-  </ol>
-</p>
+<% unless @speaks.empty? %>
+  <p>
+    <b>Langues :</b>
+    <ol class="speaks">
+      <%= render @speaks %>
+    </ol>
+  </p>
+<% end %>
 
-<p>
-  <b>Historique :</b>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td><%= Event.human_attribute_name(:description) %></td>
-        <td><%= Event.human_attribute_name(:date) %></td>
-      </tr>
-    </thead>
-  <%= render @events %>
-  </table>
-</p>
+<% unless @events.empty? %>
+  <p>
+    <b>Historique :</b>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td><%= Event.human_attribute_name(:description) %></td>
+          <td><%= Event.human_attribute_name(:date) %></td>
+        </tr>
+      </thead>
+    <%= render @events %>
+    </table>
+  </p>
+<% end %>
 
 
 <%= link_to 'Ajout événement', new_user_event_path(@user) %> |
-<%= link_to 'Edition', edit_user_path(@user) %> |
-<%= link_to 'Retour', users_path %>
+<%= link_to 'Edition', edit_user_path(@user) %>
