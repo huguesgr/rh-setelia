@@ -66,6 +66,6 @@
   </p>
 <% end %>
 
-
-<%= link_to 'Ajout événement', new_user_event_path(@user) %> |
-<%= link_to 'Edition', edit_user_path(@user) %>
+<br>
+<%= link_to "<i class='icon-calendar'></i> Ajout d'événement".html_safe, new_user_event_path(@user) %><br>
+<%= link_to "<i class='icon-edit'></i> Édition".html_safe, edit_user_path(@user) %>
