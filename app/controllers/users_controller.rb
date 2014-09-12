@@ -14,12 +14,14 @@ class UsersController < ApplicationController
     @users = User.all.paginate(:page => params[:page])
   end
   def search
-    if params[:inclusive]
+    if params[:q].blank?
+      @q = User.none.search
+    elsif params[:inclusive]
       @q = User.with_all_skills(params[:q]).search(params[:q])
     else
       @q = User.search(params[:q])
     end
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).paginate(:page => params[:page])
   end
   def new
     @user = User.new

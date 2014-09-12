@@ -3,19 +3,10 @@
 <div class="row">
   <div class="span6 offset3">
 
-  <%= render 'search' %>
-  
-  <a name="result"></a>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td><%= User.human_attribute_name(:last_name) %></td>
-        <td><%= Skill.model_name.human.pluralize %></td>
-        <td><%= User.human_attribute_name(:contract) %></td>
-      </tr>
-    </thead>
-  <%= render @users %>
-  </table>
+    <%= render 'search' %>
+
+    <a name="result"></a>
+    <%= render 'index' %>
 
   </div>
 </div>
