@@ -1,4 +1,4 @@
-<%= form_for(@user, html: { :multipart => true, class: 'form-horizontal' }) do |f| %>
+<%= nested_form_for(@user, html: { :multipart => true, class: 'form-horizontal' }) do |f| %>
   <%= render 'shared/error_messages', obj: @user %>
 
   <div class="control-group">
@@ -102,20 +102,16 @@
 
   <div class="control-group">
   <%= f.label :speaks, Language.model_name.human.pluralize, class: "control-label" %>
-  <%= f.fields_for :speaks do |s| %>
-    <div class="controls">
-      <%= s.collection_select :language_id, Language.all, :id, :name, :selected => s.object.language_id, :prompt => true %>
-      <%= s.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
-        <% unless s.object.new_record? %>
-          <%= s.check_box :_destroy %>
-          <%= s.label :_destroy, t(:destroy), style: "display:inline;" %>
-        <% end %>
-    </div>
-    <br>
-  <% end %>
-    <div class="controls">
-      <%= f.submit t('helpers.submit.add', :model=> Language.model_name.human), class: "btn btn-small btn-default", :name => "add_speak" %>
-    </div>
+  <div class="controls">
+    <%= f.fields_for :speaks do |speak_form| %>
+    <p>
+      <%= speak_form.collection_select :language_id, Language.all, :id, :name, :selected => speak_form.object.language_id, :prompt => true %>
+      <%= speak_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
+      <%= speak_form.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
+    </p>
+    <% end %>
+    <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :speaks %>
+  </div>
   </div>
 
   <div class="control-group">

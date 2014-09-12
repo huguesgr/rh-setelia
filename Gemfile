@@ -14,6 +14,7 @@ gem 'bootstrap-navbar', '2.1.4'
 gem 'pg'
 gem 'ransack'
 gem 'paperclip', '~> 4.2'
+gem 'nested_form'
 
 gem 'sass-rails', '4.0.3'
 gem 'coffee-rails', '4.0.1'

@@ -65,6 +65,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.1)
     multi_json (1.10.1)
+    nested_form (0.3.2)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -147,6 +148,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.9)
   coffee-rails (= 4.0.1)
   jquery-rails (= 3.1.1)
+  nested_form
   paperclip (~> 4.2)
   pg
   phony_rails
