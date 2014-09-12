@@ -12,6 +12,9 @@ html {
 
 body {
   padding-top: 60px;
+  a:link {
+    text-decoration: none;
+  }
 }
 
 section {
@@ -58,6 +61,11 @@ p {
 
 
 /* header */
+
+.logo {
+  max-height: 41px;
+  float:left;
+}
 
 #logo {
   float: left;

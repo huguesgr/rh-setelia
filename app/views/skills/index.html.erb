@@ -2,10 +2,10 @@
 
 <% Category.all.each do |cat| %>
   <%= render 'categories/category', :category => cat %>
-  <ul class="skills">
+  <dl class="dl-horizontal">
     <%= render @skills.where(category: cat) %>
-  </ul>
+  </dl>
 <% end %>
 
-<%= link_to "Ajout", new_skill_path %> -
-<%= link_to "Catégories", new_category_path %>
+<%= link_to "<i class='icon-plus'></i> Ajouter".html_safe, new_skill_path %><br>  
+<%= link_to "<i class='icon-th-list'></i> Catégories".html_safe, new_category_path %>
