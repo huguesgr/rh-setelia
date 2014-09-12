@@ -3,10 +3,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    if params[:add_speak]
-      @user.speaks.build
-      render 'new'
-    elsif @user.save
+    if @user.save
       flash[:success] = "Utilisateur créé."
       redirect_to @user
     else
@@ -39,16 +36,7 @@ class UsersController < ApplicationController
   end  
   def update
     @user = User.find(params[:id])
-
-    if params[:add_speak]
-      unless params[:user][:speaks_attributes].blank?
-        for attribute in params[:user][:speaks_attributes]
-          @user.speaks.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
-        end
-      end
-      @user.speaks.build
-      render 'edit'
-    elsif @user.update_attributes(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "Utilisateur modifié."
       redirect_to @user
     else
