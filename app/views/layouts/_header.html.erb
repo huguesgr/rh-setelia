@@ -3,23 +3,27 @@
 		<%= image_tag("logo.png", alt: "Setelia", class: "logo") %>
 		<nav>
 			<ul class="nav pull-right">
-				<li><%= link_to "<i class='icon-home icon-white' title='accueil'></i>".html_safe, root_path %></li>
+				<li><%= link_to "<i class=\"fa fa-home\" title=\"accueil\"></i>".html_safe, root_path %></li>
 				<% if admin_signed_in? %>
 					<li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class='icon-folder-open icon-white' title='C.V.'></i> <b class="caret"></b>
+              <% if ['users', 'skills'].include? params[:controller] %>
+                <i class="fa fa-folder-open" title="C.V."></i>
+              <% else %>
+                <i class="fa fa-folder" title="C.V."></i>
+              <% end %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "<i class='icon-th-list'></i> Liste".html_safe, users_path %></li>
-              <li><%= link_to "<i class='icon-plus'></i> Ajouter".html_safe, new_user_path %></li>
-							<li><%= link_to "<i class='icon-search'></i> Recherche".html_safe, search_users_path %></li>
+              <li><%= link_to "<i class=\"fa fa-list\"></i> Liste".html_safe, users_path %></li>
+              <li><%= link_to "<i class=\"fa fa-plus\"></i> Ajouter".html_safe, new_user_path %></li>
+							<li><%= link_to "<i class=\"fa fa-search\"></i> Recherche".html_safe, search_users_path %></li>
               <li class="divider"></li>
-              <li><%= link_to "<i class='icon-star'></i> Compétences".html_safe, skills_path %></li>
+              <li><%= link_to "<i class=\"fa fa-star\"></i> Compétences".html_safe, skills_path %></li>
             </ul>
           </li>
-					<li><%= link_to "<i class='icon-off icon-white' title='déconnexion'></i>".html_safe, destroy_admin_session_path, method: "delete" %></li>
+					<li><%= link_to "<i class=\"fa fa-toggle-on\" title=\"déconnexion\"></i>".html_safe, destroy_admin_session_path, method: "delete" %></li>
 				<% else %>
-					<li><%= link_to "Connexion", admin_session_path %></li>
+					<li><%= link_to "<i class=\"fa fa-toggle-off\" title=\"connexion\"></i>".html_safe, admin_session_path %></li>
 				<% end %>
 			</ul>
 		</nav>
