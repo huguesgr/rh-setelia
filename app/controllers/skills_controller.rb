@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :signed_in_user
+  before_action :authenticate_admin!
   
   def create
     @skill = Skill.new(skill_params)

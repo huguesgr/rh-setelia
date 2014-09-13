@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_admin!
   before_filter :load_user, :only => [:create, :new]
 
   def create

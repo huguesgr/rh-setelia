@@ -1,4 +1,5 @@
 RhSetelia::Application.routes.draw do
+  devise_for :admins
   resources :users do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
@@ -10,11 +11,8 @@ RhSetelia::Application.routes.draw do
   resources :categories
   resources :languages
   resources :events
-  resources :sessions, only: [:new, :create, :destroy]
 
   match '/home'     => 'static_pages#home',    via: 'get'
-  match '/signout'  => 'sessions#destroy',     via: 'delete'
-  match '/signin'  => 'sessions#new',     via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

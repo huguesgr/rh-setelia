@@ -4,7 +4,7 @@
 		<nav>
 			<ul class="nav pull-right">
 				<li><%= link_to "<i class='icon-home icon-white' title='accueil'></i>".html_safe, root_path %></li>
-				<% if signed_in? %>
+				<% if admin_signed_in? %>
 					<li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class='icon-folder-open icon-white' title='C.V.'></i> <b class="caret"></b>
@@ -17,9 +17,9 @@
               <li><%= link_to "<i class='icon-star'></i> Compétences".html_safe, skills_path %></li>
             </ul>
           </li>
-					<li><%= link_to "<i class='icon-off icon-white' title='déconnexion'></i>".html_safe, signout_path, method: "delete" %></li>
+					<li><%= link_to "<i class='icon-off icon-white' title='déconnexion'></i>".html_safe, destroy_admin_session_path, method: "delete" %></li>
 				<% else %>
-					<li><%= link_to "Connexion", signin_path %></li>
+					<li><%= link_to "Connexion", admin_session_path %></li>
 				<% end %>
 			</ul>
 		</nav>

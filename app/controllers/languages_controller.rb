@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  before_action :signed_in_user
+  before_action :authenticate_admin!
   
   def create
     @language = Language.new(language_params)

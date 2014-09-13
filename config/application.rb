@@ -62,5 +62,7 @@ module RhSetelia
 	config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
     config.i18n.default_locale = :fr
+
+    config.assets.initialize_on_precompile = false
   end
 end
