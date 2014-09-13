@@ -1,78 +1,126 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name}") %>
 
 <div class="row">
-  <div class="span12 offset0">
-    <p id="notice"><%= notice %></p>
-    <div>
-
-      <% @user.attributes.each do |attr_name, attr_value| %>
-        <% next if attr_name["attachment"] || attr_name == "id" || attr_value.nil? || attr_value=="" || attr_name=="first_name" || attr_name=="last_name" %>
-        <% case attr_name %>
-          <% when "experience" %>
-            <% attr_value=User::EXPERIENCE[attr_value] %>
-          <% when "mobility" %>
-            <% attr_value=User::MOBILITY[attr_value] %>
-          <% when "salary" %>
-            <% attr_value=User::SALARY[attr_value] %>
-          <% when "interview_result" %>
-            <% attr_value=User::INTERVIEW_RESULT[attr_value] %>
-          <% when "interview_state" %>
-            <% attr_value=User::INTERVIEW_STATE[attr_value] %>
-          <% when "contract" %>
-            <% attr_value=User::CONTRACT[attr_value] %>
-          <% when "international_mobility" %>
-            <% attr_value=t(attr_value.to_s) %>
-        <% end %>
-        <p>
-          <b><%= User.human_attribute_name(attr_name) %></b>
-          <%= attr_value.to_s %>
-        </p>
-      <% end %>
-
-      <% if @user.attachment.present? %>
-        <p>
-          <b>Pièce jointe :</b>
-          <%= link_to @user.attachment.original_filename, @user.attachment.url if @user.attachment.present? %> <%= "(#{@user.attachment.size/1024/1024} Mo.)" %>
-        </p>
-      <% end %>
-
-      <% unless @skills.empty? %>
-        <p>
-          <b>Compétences :</b>
-          <ol class="skills">
-            <%= render @skills %>
-          </ol>
-        </p>
-      <% end %>
-
-      <% unless @speaks.empty? %>
-        <p>
-          <b>Langues :</b>
-          <ol class="speaks">
-            <%= render @speaks %>
-          </ol>
-        </p>
-      <% end %>
-
-    </div>
-
-    <% unless @events.empty? %>
-      <b>Historique :</b>
-      <div class="span10 offset1">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <td><%= Event.human_attribute_name(:description) %></td>
-              <td><%= Event.human_attribute_name(:date) %></td>
-            </tr>
-          </thead>
-        <%= render @events %>
-        </table>
-      </div>
+  <div class="span5 well">
+    <p>
+      <b><%= fa_icon "envelope" %></b>
+      <%= @user.email %>
+    </p>
+    <p>
+      <b><%= fa_icon "save" %></b>
+      <%= @user.created_at %>
+    </p>
+    <p>
+      <b><i class="icon-pencil"></i></b>
+      <%= @user.updated_at %>
+    </p>
+    <% if @user.address.present? %>
+    <p>
+      <b><%= fa_icon "home" %></b>
+      <%= @user.address %>
+    </p>
     <% end %>
-
+    <% if @user.phone.present? %>
+    <p>
+      <b><%= fa_icon "phone" %></b>
+      <%= @user.phone %>
+    </p>
+    <% end %>
+    <% if @user.attachment.present? %>
+      <p>
+        <b><%= fa_icon "file-pdf-o" %></b>
+        <%= link_to @user.attachment.original_filename, @user.attachment.url if @user.attachment.present? %> <%= "(#{@user.attachment.size/1024} ko.)" %>
+      </p>
+    <% end %>
   </div>
-  <div class="span12 offset0">
+  <div class="span6 well">
+    <% if @user.mobility.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:mobility) %></b>
+      <%= User::MOBILITY[@user.mobility] %>
+    </p>
+    <% end %>
+    <p>
+      <b><%= User.human_attribute_name(:international_mobility) %></b>
+      <%= t(@user.international_mobility) %>
+    </p>
+    <% if @user.experience.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:experience) %></b>
+      <%= User::EXPERIENCE[@user.experience] %>
+    </p>
+    <% end %>
+    <% if @user.contract.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:contract) %></b>
+      <%= User::CONTRACT[@user.contract] %>
+    </p>
+    <% end %>
+    <% if @user.availability.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:availability) %></b>
+      <%= @user.availability %>
+    </p>
+    <% end %>
+    <% if @user.salary.present? %>  
+    <p>
+      <b><%= fa_icon "euro" %></b>
+      <%= User::SALARY[@user.salary] %>
+    </p>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="span8 well">
+    <% if @user.interview_result.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:interview_result) %></b>
+      <%= User::INTERVIEW_RESULT[@user.interview_result] %>
+    </p>
+    <% end %>
+    <% if @user.interview_state.present? %>  
+    <p>
+      <b><%= User.human_attribute_name(:interview_state) %></b>
+      <%= User::INTERVIEW_STATE[@user.interview_state] %>
+    </p>
+    <% end %>    
+    <p>
+      <b><%= fa_icon "comment" %></b>
+      <%= @user.comment %>
+    </p>
+  </div>
+  <div class="span3 well">
+      <b><%= fa_icon "star" %></b>
+      <ol class="skills">
+        <%= render @skills %>
+      </ol>
+
+      <b><%= fa_icon "language" %></b>
+      <ul class="speaks">
+        <%= render @speaks %>
+      </ul>
+  </div>
+</div>
+
+<% unless @events.empty? %>
+<div class="row">
+  <div class="span10 offset1 well">
+  <b>Historique :</b>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td><%= Event.human_attribute_name(:description) %></td>
+          <td><%= Event.human_attribute_name(:date) %></td>
+        </tr>
+      </thead>
+    <%= render @events %>
+    </table>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="span12">
     <%= link_to "<i class='icon-calendar'></i> Ajout d'événement".html_safe, new_user_event_path(@user) %><br>
     <%= link_to "<i class='icon-edit'></i> Édition".html_safe, edit_user_path(@user) %> 
   </div>

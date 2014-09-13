@@ -10,6 +10,7 @@ gem 'phony_rails'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bootstrap-navbar', '2.1.4'
+gem 'font-awesome-rails'
 
 gem 'pg'
 gem 'ransack'

@@ -12,7 +12,7 @@ RhSetelia::Application.routes.draw do
   resources :languages
   resources :events
 
-  match '/home'     => 'static_pages#home',    via: 'get'
+  match '/home'   , to: 'static_pages#home',          via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

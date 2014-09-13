@@ -9,10 +9,6 @@
 
   <div class="control-group">
   <%= f.label :skills_id, class: "control-label" %>
-    <div class="controls checkbox">
-      <%= check_box_tag :inclusive %>
-      <%= label_tag :inclusive, "inclusif", class: "additional_checkbox" %>
-    </div>
     <div class="controls checkbox skills-collapse">
       <div class="accordion" id="accordion">
         <% Category.all.each do |cat| %>
@@ -35,6 +31,10 @@
           </div>
         <% end %>
       </div>
+    </div>
+    <div class="controls checkbox">
+      <%= check_box_tag :inclusive %>
+      <%= label_tag :inclusive, "doit répondre à tous ces critères", class: "additional_checkbox" %>
     </div>
   </div>
 

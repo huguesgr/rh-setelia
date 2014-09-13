@@ -23,7 +23,7 @@ fr:
       user: C.V.
       admin: administrateur
       language: langue
-      skill: compétence
+      skill: compétences
       category: catégorie
       event: événement
     attributes:
@@ -32,7 +32,7 @@ fr:
       language:
         name: parlée
       skill:
-        id: connue
+        id: connues
         keyword: libellé
       user:
         attachment: pièce jointe
