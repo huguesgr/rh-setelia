@@ -17,6 +17,7 @@ gem 'ransack'
 gem 'paperclip', '~> 4.2'
 gem 'nested_form'
 gem 'devise'
+gem 'rails-timeago', '~> 2.0'
 
 gem 'sass-rails', '4.0.3'
 gem 'coffee-rails', '4.0.1'

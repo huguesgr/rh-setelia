@@ -1,15 +1,33 @@
 <% provide(:title, 'Compétences') %>
 
 <div class="row">
-  <div class="span3 offset2">
-    <% Category.all.each do |cat| %>
+  <div class="span5 offset7">
+    <div style="float:right;">
+      <%= link_to raw("<i class=\"fa fa-plus\"></i> compétence"), 
+          new_skill_path, 
+          class: "btn btn-small btn-success" %>
+    </div>
+    <div style="float:right; padding-right:3px;">
+      <%= link_to raw("<i class=\"fa fa-plus\"></i> catégorie"), 
+          new_category_path, 
+          class: "btn btn-small btn-success" %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <% Category.all.each do |cat| %>
+  <div class="span8 offset2 well">
       <%= render 'categories/category', :category => cat %>
       <dl class="dl-horizontal">
-        <%= render @skills.where(category: cat) %>
+        <% if @skills.where(category: cat).empty? %>
+          <center><i>cette catégorie est vide</i></center>
+        <% else %>
+          <%= render @skills.where(category: cat) %>
+        <% end %>
       </dl>
-    <% end %>
-
-    <%= link_to "<i class='icon-plus'></i> Ajouter".html_safe, new_skill_path %><br>  
-    <%= link_to "<i class='icon-th-list'></i> Catégories".html_safe, new_category_path %>
   </div>
+  <% end %>
 </div>

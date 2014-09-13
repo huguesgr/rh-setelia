@@ -1,6 +1,24 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name}") %>
 
 <div class="row">
+  <div class="span5 offset7">
+    <div style="float:right;">
+      <%= link_to raw("<i class=\"fa fa-pencil\"></i> édition"), 
+          edit_user_path(@user),
+          class: "btn btn-small btn-warning" %>
+    </div>
+    <div style="float:right; padding-right:3px;">
+      <%= link_to raw("<i class=\"fa fa-plus\"></i> événement"), 
+          new_user_event_path(@user),
+          class: "btn btn-small btn-success",
+          method: :get %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
   <div class="span5 well">
     <p>
       <b><%= fa_icon "envelope" %></b>
@@ -8,11 +26,11 @@
     </p>
     <p>
       <b><%= fa_icon "save" %></b>
-      <%= @user.created_at %>
+      <%= timeago_tag @user.created_at, :nojs => true, :limit => 10.days.ago, :lang => :fr %>
     </p>
     <p>
       <b><i class="icon-pencil"></i></b>
-      <%= @user.updated_at %>
+      <%= timeago_tag @user.updated_at, :nojs => true, :limit => 10.days.ago, :lang => :fr %>
     </p>
     <% if @user.address.present? %>
     <p>
@@ -92,7 +110,9 @@
   <div class="span3 well">
       <b><%= fa_icon "star" %></b>
       <ol class="skills">
-        <%= render @skills %>
+        <% Category.all.each do |cat| %>
+          <%= render @skills.where(category: cat) %><br>
+        <% end %>
       </ol>
 
       <b><%= fa_icon "language" %></b>
@@ -105,23 +125,9 @@
 <% unless @events.empty? %>
 <div class="row">
   <div class="span10 offset1 well">
-  <b>Historique :</b>
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <td><%= Event.human_attribute_name(:description) %></td>
-          <td><%= Event.human_attribute_name(:date) %></td>
-        </tr>
-      </thead>
     <%= render @events %>
     </table>
   </div>
 </div>
 <% end %>
-
-<div class="row">
-  <div class="span12">
-    <%= link_to "<i class='icon-calendar'></i> Ajout d'événement".html_safe, new_user_event_path(@user) %><br>
-    <%= link_to "<i class='icon-edit'></i> Édition".html_safe, edit_user_path(@user) %> 
-  </div>
-</div>

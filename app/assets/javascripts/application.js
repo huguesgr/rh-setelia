@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery_nested_form
+//= require rails-timeago
+//= require locales/jquery.timeago.fr.js
 //= require_tree .
