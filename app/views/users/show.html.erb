@@ -111,7 +111,10 @@
       <b><%= fa_icon "star" %></b>
       <ol class="skills">
         <% Category.all.each do |cat| %>
-          <%= render @skills.where(category: cat) %><br>
+          <%= render @skills.where(category: cat) %>
+          <% unless @skills.where(category: cat).empty? %>
+            <br>
+          <% end %>
         <% end %>
       </ol>
 
