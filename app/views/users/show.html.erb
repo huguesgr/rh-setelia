@@ -1,71 +1,79 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name}") %>
 
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span12 offset0">
+    <p id="notice"><%= notice %></p>
+    <div>
 
-<% @user.attributes.each do |attr_name, attr_value| %>
-  <% next if attr_name["attachment"] || attr_name == "id" || attr_value.nil? || attr_value=="" || attr_name=="first_name" || attr_name=="last_name" %>
-  <% case attr_name %>
-    <% when "experience" %>
-      <% attr_value=User::EXPERIENCE[attr_value] %>
-    <% when "mobility" %>
-      <% attr_value=User::MOBILITY[attr_value] %>
-    <% when "salary" %>
-      <% attr_value=User::SALARY[attr_value] %>
-    <% when "interview_result" %>
-      <% attr_value=User::INTERVIEW_RESULT[attr_value] %>
-    <% when "interview_state" %>
-      <% attr_value=User::INTERVIEW_STATE[attr_value] %>
-    <% when "contract" %>
-      <% attr_value=User::CONTRACT[attr_value] %>
-    <% when "international_mobility" %>
-      <% attr_value=t(attr_value.to_s) %>
-  <% end %>
-  <p>
-    <b><%= User.human_attribute_name(attr_name) %></b>
-    <%= attr_value.to_s %>
-  </p>
-<% end %>
+      <% @user.attributes.each do |attr_name, attr_value| %>
+        <% next if attr_name["attachment"] || attr_name == "id" || attr_value.nil? || attr_value=="" || attr_name=="first_name" || attr_name=="last_name" %>
+        <% case attr_name %>
+          <% when "experience" %>
+            <% attr_value=User::EXPERIENCE[attr_value] %>
+          <% when "mobility" %>
+            <% attr_value=User::MOBILITY[attr_value] %>
+          <% when "salary" %>
+            <% attr_value=User::SALARY[attr_value] %>
+          <% when "interview_result" %>
+            <% attr_value=User::INTERVIEW_RESULT[attr_value] %>
+          <% when "interview_state" %>
+            <% attr_value=User::INTERVIEW_STATE[attr_value] %>
+          <% when "contract" %>
+            <% attr_value=User::CONTRACT[attr_value] %>
+          <% when "international_mobility" %>
+            <% attr_value=t(attr_value.to_s) %>
+        <% end %>
+        <p>
+          <b><%= User.human_attribute_name(attr_name) %></b>
+          <%= attr_value.to_s %>
+        </p>
+      <% end %>
 
-<% if @user.attachment.present? %>
-  <p>
-    <b>Pièce jointe :</b>
-    <%= link_to @user.attachment.original_filename, @user.attachment.url if @user.attachment.present? %> <%= "(#{@user.attachment.size/1024/1024} Mo.)" %>
-  </p>
-<% end %>
+      <% if @user.attachment.present? %>
+        <p>
+          <b>Pièce jointe :</b>
+          <%= link_to @user.attachment.original_filename, @user.attachment.url if @user.attachment.present? %> <%= "(#{@user.attachment.size/1024/1024} Mo.)" %>
+        </p>
+      <% end %>
 
-<% unless @skills.empty? %>
-  <p>
-    <b>Compétences :</b>
-    <ol class="skills">
-      <%= render @skills %>
-    </ol>
-  </p>
-<% end %>
+      <% unless @skills.empty? %>
+        <p>
+          <b>Compétences :</b>
+          <ol class="skills">
+            <%= render @skills %>
+          </ol>
+        </p>
+      <% end %>
 
-<% unless @speaks.empty? %>
-  <p>
-    <b>Langues :</b>
-    <ol class="speaks">
-      <%= render @speaks %>
-    </ol>
-  </p>
-<% end %>
+      <% unless @speaks.empty? %>
+        <p>
+          <b>Langues :</b>
+          <ol class="speaks">
+            <%= render @speaks %>
+          </ol>
+        </p>
+      <% end %>
 
-<% unless @events.empty? %>
-  <p>
-    <b>Historique :</b>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td><%= Event.human_attribute_name(:description) %></td>
-          <td><%= Event.human_attribute_name(:date) %></td>
-        </tr>
-      </thead>
-    <%= render @events %>
-    </table>
-  </p>
-<% end %>
+    </div>
 
-<br>
-<%= link_to "<i class='icon-calendar'></i> Ajout d'événement".html_safe, new_user_event_path(@user) %><br>
-<%= link_to "<i class='icon-edit'></i> Édition".html_safe, edit_user_path(@user) %>
+    <% unless @events.empty? %>
+      <b>Historique :</b>
+      <div class="span10 offset1">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td><%= Event.human_attribute_name(:description) %></td>
+              <td><%= Event.human_attribute_name(:date) %></td>
+            </tr>
+          </thead>
+        <%= render @events %>
+        </table>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="span12 offset0">
+    <%= link_to "<i class='icon-calendar'></i> Ajout d'événement".html_safe, new_user_event_path(@user) %><br>
+    <%= link_to "<i class='icon-edit'></i> Édition".html_safe, edit_user_path(@user) %> 
+  </div>
+</div>
