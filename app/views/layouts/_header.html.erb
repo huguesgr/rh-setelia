@@ -11,7 +11,7 @@
                 <i class="fa fa-folder-open" title="C.V."></i>
               <% else %>
                 <i class="fa fa-folder" title="C.V."></i>
-              <% end %> <b class="caret"></b>
+              <% end %> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "<i class=\"fa fa-list\"></i> Liste".html_safe, users_path %></li>
@@ -21,9 +21,9 @@
               <li><%= link_to "<i class=\"fa fa-star\"></i> Compétences".html_safe, skills_path %></li>
             </ul>
           </li>
-					<li><%= link_to "<i class=\"fa fa-toggle-on\" title=\"déconnexion\"></i>".html_safe, destroy_admin_session_path, method: "delete" %></li>
+					<li><%= link_to "<i class=\"fa fa-sign-out\" title=\"déconnexion\"></i>".html_safe, destroy_admin_session_path, method: "delete" %></li>
 				<% else %>
-					<li><%= link_to "<i class=\"fa fa-toggle-off\" title=\"connexion\"></i>".html_safe, admin_session_path %></li>
+					<li><%= link_to "<i class=\"fa fa-sign-in\" title=\"connexion\"></i>".html_safe, admin_session_path %></li>
 				<% end %>
 			</ul>
 		</nav>

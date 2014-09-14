@@ -22,7 +22,7 @@
   <div class="span5 well">
     <p>
       <%= fa_icon "envelope" %>
-      <%= @user.email %>
+      <%= mail_to @user.email %>
     </p>
     <p>
       <%= fa_icon "save" %>
@@ -34,7 +34,7 @@
     </p>
     <% if @user.address.present? %>
     <p>
-      <%= fa_icon "home" %>
+      <%= fa_icon "map-marker" %>
       <%= @user.address %>
     </p>
     <% end %>
@@ -46,7 +46,7 @@
     <% end %>
     <% if @user.attachment.present? %>
       <p>
-        <%= fa_icon "file-pdf-o" %></b>
+        <%= fa_icon "paperclip" %></b>
         <%= link_to @user.attachment.original_filename, @user.attachment.url if @user.attachment.present? %> <%= "(#{@user.attachment.size/1024} ko.)" %>
       </p>
     <% end %>
@@ -54,29 +54,29 @@
   <div class="span6 well">
     <% if @user.mobility.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:mobility) %></b>
+      <%= fa_icon "truck" %> <b><%= User.human_attribute_name(:mobility) %></b>
       <%= User::MOBILITY[@user.mobility] %>
     </p>
     <% end %>
     <p>
-      <b><%= User.human_attribute_name(:international_mobility) %></b>
+      <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility) %></b>
       <%= t(@user.international_mobility) %>
     </p>
     <% if @user.experience.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:experience) %></b>
+      <%= fa_icon "book" %> <b><%= User.human_attribute_name(:experience) %></b>
       <%= User::EXPERIENCE[@user.experience] %>
     </p>
     <% end %>
     <% if @user.contract.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:contract) %></b>
+      <%= fa_icon "file-text" %> <b><%= User.human_attribute_name(:contract) %></b>
       <%= User::CONTRACT[@user.contract] %>
     </p>
     <% end %>
     <% if @user.availability.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:availability) %></b>
+      <%= fa_icon "check" %> <b><%= User.human_attribute_name(:availability) %></b>
       <%= @user.availability %>
     </p>
     <% end %>
@@ -108,18 +108,22 @@
     </p>
   </div>
   <div class="span3 well">
+    <div>
       <%= fa_icon "star" %>
       <% Category.all.each do |cat| %>
-        <%= render @skills.where(category: cat) %>
-        <% unless @skills.where(category: cat).empty? %>
-          <br>
-        <% end %>
+        <ol class="speaks">
+          <% unless @skills.where(category: cat).empty? %>
+            <dd><%= render @skills.where(category: cat) %></dd>
+          <% end %>
+        </ol>
       <% end %>
-
+    </div>
+    <div>
       <%= fa_icon "language" %>
-      <ul class="speaks">
+      <ol class="speaks">
         <%= render @speaks %>
-      </ul>
+      </ol>
+    </div>
   </div>
 </div>
 

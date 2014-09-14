@@ -20,14 +20,14 @@
 <div class="row">
   <% Category.all.each do |cat| %>
   <div class="span8 offset2 well">
-      <%= render 'categories/category', :category => cat %>
-      <dl class="dl-horizontal">
-        <% if @skills.where(category: cat).empty? %>
-          <center><i>cette catégorie est vide</i></center>
-        <% else %>
-          <%= render @skills.where(category: cat) %>
-        <% end %>
-      </dl>
+    <%= render 'categories/category', :category => cat %>
+    <% if @skills.where(category: cat).empty? %>
+      <center><i>cette catégorie est vide</i></center>
+    <% else %>
+      <ol class="skills">
+        <%= render @skills.where(category: cat) %>
+      </ol>
+    <% end %>
   </div>
   <% end %>
 </div>
