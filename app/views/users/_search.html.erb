@@ -67,9 +67,9 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :contract_eq, User.human_attribute_name(:contract), class: "control-label" %>
+  <%= f.label :contracts_type_eq, Contract.model_name.human, class: "control-label" %>
   <div class="controls">
-  <%= f.select :contract_eq, User::CONTRACT.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
+  <%= f.select :contracts_type_eq, Contract::TYPE.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
   </div>
   </div>
 

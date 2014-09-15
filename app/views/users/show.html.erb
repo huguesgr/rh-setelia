@@ -68,12 +68,10 @@
       <%= User::EXPERIENCE[@user.experience] %>
     </p>
     <% end %>
-    <% if @user.contract.present? %>  
     <p>
       <%= fa_icon "file-text" %> <b><%= User.human_attribute_name(:contract) %></b>
-      <%= User::CONTRACT[@user.contract] %>
+      <%= render @contracts %>
     </p>
-    <% end %>
     <% if @user.availability.present? %>  
     <p>
       <%= fa_icon "check" %> <b><%= User.human_attribute_name(:availability) %></b>
@@ -102,10 +100,12 @@
       <%= User::INTERVIEW_STATE[@user.interview_state] %>
     </p>
     <% end %>
+    <% if @user.change_status.present? %>  
     <p>
       <b><%= User.human_attribute_name(:change_status) %></b>
       <%= t @user.change_status.to_s %>
     </p>
+    <% end %>
     <p>
       <%= fa_icon "comment" %>
       <%= @user.comment %>

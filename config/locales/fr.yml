@@ -26,6 +26,7 @@ fr:
       skill: compétences
       category: catégorie
       event: événement
+      contract: contrats recherchés
     attributes:
       category:
         name: libellé
@@ -48,7 +49,7 @@ fr:
         international_mobility: mobilité internationale
         experience: expérience
         salary: rémunération
-        contract: contrat recherché
+        contract: contrats recherchés
         interview_result: résultat d'entretien
         interview_state: état de la candidature
         comment: commentaire

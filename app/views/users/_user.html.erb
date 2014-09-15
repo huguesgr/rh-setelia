@@ -3,7 +3,4 @@
   <td>
     <%=user.skills.first.keyword unless user.skills.first.nil?%><%=", #{user.skills.second.keyword}" unless user.skills.second.nil?%><%="..." unless user.skills.all[2].nil?%>
   </td>
-  <td>
-  <%= User::CONTRACT[user.contract] unless user.contract.nil? %>
-  </td>
  </tr>

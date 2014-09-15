@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
   has_many :events, dependent: :destroy
   has_attached_file :attachment
+
+  has_many :contracts, dependent: :destroy
+  accepts_nested_attributes_for :contracts, :allow_destroy => true
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
@@ -24,7 +27,6 @@ class User < ActiveRecord::Base
   MOBILITY = ["Ile-de-France", "France"]
   EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]
   SALARY = ["Moins de 22k", "22-25k", "25-30k", "30-35k", "35-40k", "40-45k", "45-50k", "50-55k", "55-60k", "60-65k", "65-70k", "Plus de 70k"]
-  CONTRACT = ["CDD", "CDI", "Freelance", "Stage", "Alternance"]
   INTERVIEW_RESULT = ["Top", "OK", "NOK"]
   INTERVIEW_STATE = ["Contacté", "1er entretien", "2ème entretien", "Présenté aux clients", "Salarié", "Ancien salairé"]
 

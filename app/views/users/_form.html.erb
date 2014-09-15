@@ -72,13 +72,6 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :contract, class: "control-label" %>
-  <div class="controls">
-  <%= f.select :contract, User::CONTRACT.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
-  </div>
-  </div>
-
-  <div class="control-group">
   <%= f.label :skills, Skill.model_name.human.pluralize, class: "control-label" %> 
     <div class="controls checkbox skills-collapse">
       <div class="accordion" id="accordion">
@@ -111,6 +104,19 @@
     </p>
     <% end %>
     <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :speaks %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :contracts, Contract.model_name.human, class: "control-label" %>
+  <div class="controls">
+    <%= f.fields_for :contracts do |contract_form| %>
+    <p>
+      <%= contract_form.select :type, Contract::TYPE.each_with_index.map { |index, type| [index,type] }, :prompt => true %>
+      <%= contract_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
+    </p>
+    <% end %>
+    <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :contracts %>
   </div>
   </div>
 
