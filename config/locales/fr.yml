@@ -53,6 +53,7 @@ fr:
         interview_state: état de la candidature
         comment: commentaire
         availability: disponibilité
+        change_status: changement de statut à faire
       user/speaks:
         level: niveau de langue
 

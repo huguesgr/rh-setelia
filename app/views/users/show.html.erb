@@ -60,7 +60,7 @@
     <% end %>
     <p>
       <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility) %></b>
-      <%= t(@user.international_mobility) %>
+      <%= t @user.international_mobility.to_s %>
     </p>
     <% if @user.experience.present? %>  
     <p>
@@ -101,7 +101,11 @@
       <b><%= User.human_attribute_name(:interview_state) %></b>
       <%= User::INTERVIEW_STATE[@user.interview_state] %>
     </p>
-    <% end %>    
+    <% end %>
+    <p>
+      <b><%= User.human_attribute_name(:change_status) %></b>
+      <%= t @user.change_status.to_s %>
+    </p>
     <p>
       <%= fa_icon "comment" %>
       <%= @user.comment %>

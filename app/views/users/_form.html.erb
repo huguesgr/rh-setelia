@@ -134,6 +134,13 @@
   <%= f.select :interview_state, User::INTERVIEW_STATE.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
   </div>
   </div>
+  
+  <div class="control-group">
+  <%= f.label :change_status, class: "control-label" %>
+  <div class="controls">
+  <%= f.check_box :change_status %>
+  </div>
+  </div>
 
   <div class="control-group">
   <%= f.label :attachment, class: "control-label" %>
