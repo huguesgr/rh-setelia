@@ -100,12 +100,10 @@
       <%= User::INTERVIEW_STATE[@user.interview_state] %>
     </p>
     <% end %>
-    <% if @user.change_status.present? %>  
     <p>
       <b><%= User.human_attribute_name(:change_status) %></b>
-      <%= t @user.change_status.to_s %>
+      <%= t @user.change_status.to_s unless @user.change_status.nil? %>
     </p>
-    <% end %>
     <p>
       <%= fa_icon "comment" %>
       <%= @user.comment %>
