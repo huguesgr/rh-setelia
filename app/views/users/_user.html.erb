@@ -1,5 +1,6 @@
  <tr>
   <td><%= link_to "#{user.first_name} #{user.last_name}", user %></td>
+  <td><%= Profile.find(user.profile).label unless !user.profile %></td>
   <td>
     <%=user.skills.first.keyword unless user.skills.first.nil?%><%=", #{user.skills.second.keyword}" unless user.skills.second.nil?%><%="..." unless user.skills.all[2].nil?%>
   </td>

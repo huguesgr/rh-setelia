@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_save { self.first_name = first_name.titleize }
   before_save { self.last_name = last_name.upcase }
   phony_normalize :phone, :default_country_code => 'FR'
-  
+
   has_many :skills, through: :proficiencies
   has_many :proficiencies, dependent: :destroy
 
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :events, dependent: :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true
-  
+
   has_attached_file :attachment
 
   has_many :contracts, dependent: :destroy
@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   SALARY = ["Moins de 22k", "22-25k", "25-30k", "30-35k", "35-40k", "40-45k", "45-50k", "50-55k", "55-60k", "60-65k", "65-70k", "Plus de 70k"]
   INTERVIEW_RESULT = ["Top", "OK", "NOK"]
   INTERVIEW_STATE = ["Contacté", "1er entretien", "2ème entretien", "Présenté aux clients", "Salarié", "Ancien salairé"]
+  DIPLOMA = ["Bac +5", "Bac +3/4", "Bac +2", "Bac", "Autres"]
 
 
   def self.with_all_skills(q)

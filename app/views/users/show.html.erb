@@ -20,6 +20,12 @@
 
 <div class="row">
   <div class="span5 well">
+    <% if @user.profile.present? %>
+    <p>
+      <%= fa_icon "bookmark" %>
+      <%= Profile.find(@user.profile).label %>
+    </p>
+    <% end %>
     <p>
       <%= fa_icon "envelope" %>
       <%= mail_to @user.email %>
@@ -62,6 +68,12 @@
       <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility) %></b>
       <%= t @user.international_mobility.to_s %>
     </p>
+    <% if @user.diploma.present? %>  
+    <p>
+      <%= fa_icon "graduation-cap " %> <b><%= User.human_attribute_name(:diploma) %></b>
+      <%= User::DIPLOMA[@user.diploma] %>
+    </p>
+    <% end %>
     <% if @user.experience.present? %>  
     <p>
       <%= fa_icon "book" %> <b><%= User.human_attribute_name(:experience) %></b>

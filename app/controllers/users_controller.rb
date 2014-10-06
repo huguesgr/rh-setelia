@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.skills.build
-    @user.events.build
   end
   def show
     @user = User.find(params[:id])
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:attachment, :change_status, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :experience, :salary, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:date, :description])
+      params.require(:user).permit(:attachment, :change_status, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :diploma, :profile, :experience, :salary, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:date, :description])
     end
 
 end
