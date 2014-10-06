@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :speaks, :allow_destroy => true
 
   has_many :events, dependent: :destroy
+  accepts_nested_attributes_for :events, :allow_destroy => true
+  
   has_attached_file :attachment
 
   has_many :contracts, dependent: :destroy

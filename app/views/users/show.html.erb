@@ -87,6 +87,24 @@
   </div>
 </div>
 <div class="row">
+  <div class="span3 well">
+    <div>
+      <%= fa_icon "star" %>
+      <% Category.all.each do |cat| %>
+        <ol class="speaks">
+          <% unless @skills.where(category: cat).empty? %>
+            <dd><%= render @skills.where(category: cat) %></dd>
+          <% end %>
+        </ol>
+      <% end %>
+    </div>
+    <div>
+      <%= fa_icon "language" %>
+      <ol class="speaks">
+        <%= render @speaks %>
+      </ol>
+    </div>
+  </div>
   <div class="span8 well">
     <% if @user.interview_result.present? %>  
     <p>
@@ -108,24 +126,6 @@
       <%= fa_icon "comment" %>
       <%= @user.comment %>
     </p>
-  </div>
-  <div class="span3 well">
-    <div>
-      <%= fa_icon "star" %>
-      <% Category.all.each do |cat| %>
-        <ol class="speaks">
-          <% unless @skills.where(category: cat).empty? %>
-            <dd><%= render @skills.where(category: cat) %></dd>
-          <% end %>
-        </ol>
-      <% end %>
-    </div>
-    <div>
-      <%= fa_icon "language" %>
-      <ol class="speaks">
-        <%= render @speaks %>
-      </ol>
-    </div>
   </div>
 </div>
 

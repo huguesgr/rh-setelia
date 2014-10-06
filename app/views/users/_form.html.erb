@@ -95,16 +95,16 @@
 
   <div class="control-group">
   <%= f.label :speaks, Language.model_name.human.pluralize, class: "control-label" %>
-  <div class="controls">
-    <%= f.fields_for :speaks do |speak_form| %>
-    <p>
-      <%= speak_form.collection_select :language_id, Language.all, :id, :name, :selected => speak_form.object.language_id, :prompt => true %>
-      <%= speak_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
-      <%= speak_form.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
-    </p>
-    <% end %>
-    <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :speaks %>
-  </div>
+    <div class="controls">
+      <%= f.fields_for :speaks do |speak_form| %>
+      <p>
+        <%= speak_form.collection_select :language_id, Language.all, :id, :name, :selected => speak_form.object.language_id, :prompt => true %>
+        <%= speak_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
+        <%= speak_form.select :level, Speak::LEVELS.each_with_index.map { |level, index| [level,index] }, :prompt => true %>
+      </p>
+      <% end %>
+      <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :speaks %>
+    </div>
   </div>
 
   <div class="control-group">
@@ -118,6 +118,20 @@
     <% end %>
     <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :contracts %>
   </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :events, Event.model_name.human.pluralize, class: "control-label" %>
+    <div class="controls">
+      <%= f.fields_for :events do |event_form| %>
+      <p>
+        <%= event_form.date_field :date %>
+        <%= event_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
+        <%= event_form.text_area :description %>
+      </p>
+      <% end %>
+      <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :events %>
+    </div>
   </div>
 
   <div class="control-group">
