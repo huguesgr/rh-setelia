@@ -24,10 +24,13 @@ fr:
       admin: administrateur
       language: langue
       skill: compétences
+      profile: profil
       category: catégorie
       event: événement
       contract: contrats recherchés
     attributes:
+      profile:
+        label: intitulé
       category:
         name: libellé
       language:

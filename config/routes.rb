@@ -1,4 +1,8 @@
 RhSetelia::Application.routes.draw do
+  get 'profiles/new'
+
+  get 'profiles/create'
+
   devise_for :admins
   resources :users do
     collection do
@@ -8,6 +12,7 @@ RhSetelia::Application.routes.draw do
   end
   resources :admins
   resources :skills
+  resources :profiles
   resources :categories
   resources :languages
   resources :events
