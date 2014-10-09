@@ -1,0 +1,26 @@
+<%= form_for(@profile, html: {class: 'form-horizontal' }) do |f| %>
+  <%= render 'shared/error_messages', obj: @profile %>
+
+  <div class="control-group">
+    <%= f.label :label, class: "control-label" %>
+    <div class="controls">
+    <%= f.text_field :label %>
+    </div>
+  </div>
+
+  <div class="control-group">
+  <div class="controls">
+  <%= f.submit t('helpers.submit.submit', :model=> Profile.model_name.human), class: "btn btn-small btn-primary" %>
+  </div>
+  </div>
+<% end %>
+
+<div class="form-horizontal">
+<div class="control-group">
+<div class="controls">
+<% unless @profile.new_record? %>
+  <%= button_to "Supprimer", @profile, method: :delete, data: { confirm: "Supprimer ?" }, title: @profile.label, class: "btn btn-small btn-danger" %>
+<% end %>
+</div>
+</div>
+</div>
