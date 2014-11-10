@@ -60,33 +60,33 @@
   <div class="span6 well">
     <% if @user.mobility.present? %>  
     <p>
-      <%= fa_icon "truck" %> <b><%= User.human_attribute_name(:mobility) %></b>
+      <%= fa_icon "truck" %> <b><%= User.human_attribute_name(:mobility).capitalize %></b>
       <%= User::MOBILITY[@user.mobility] %>
     </p>
     <% end %>
     <p>
-      <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility) %></b>
+      <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility).capitalize %></b>
       <%= t @user.international_mobility.to_s %>
     </p>
     <% if @user.diploma.present? %>  
     <p>
-      <%= fa_icon "graduation-cap " %> <b><%= User.human_attribute_name(:diploma) %></b>
+      <%= fa_icon "graduation-cap " %> <b><%= User.human_attribute_name(:diploma).capitalize %></b>
       <%= User::DIPLOMA[@user.diploma] %>
     </p>
     <% end %>
     <% if @user.experience.present? %>  
     <p>
-      <%= fa_icon "book" %> <b><%= User.human_attribute_name(:experience) %></b>
+      <%= fa_icon "book" %> <b><%= User.human_attribute_name(:experience).capitalize %></b>
       <%= User::EXPERIENCE[@user.experience] %>
     </p>
     <% end %>
     <p>
-      <%= fa_icon "file-text" %> <b><%= User.human_attribute_name(:contract) %></b>
+      <%= fa_icon "file-text" %> <b><%= User.human_attribute_name(:contract).capitalize %></b>
       <%= render @contracts %>
     </p>
     <% if @user.availability.present? %>  
     <p>
-      <%= fa_icon "check" %> <b><%= User.human_attribute_name(:availability) %></b>
+      <%= fa_icon "check" %> <b><%= User.human_attribute_name(:availability).capitalize %></b>
       <%= @user.availability %>
     </p>
     <% end %>
@@ -120,18 +120,18 @@
   <div class="span8 well">
     <% if @user.interview_result.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:interview_result) %></b>
+      <b><%= User.human_attribute_name(:interview_result).capitalize %></b>
       <%= User::INTERVIEW_RESULT[@user.interview_result] %>
     </p>
     <% end %>
     <% if @user.interview_state.present? %>  
     <p>
-      <b><%= User.human_attribute_name(:interview_state) %></b>
+      <b><%= User.human_attribute_name(:interview_state).capitalize %></b>
       <%= User::INTERVIEW_STATE[@user.interview_state] %>
     </p>
     <% end %>
     <p>
-      <b><%= User.human_attribute_name(:change_status) %></b>
+      <b><%= User.human_attribute_name(:change_status).capitalize %></b>
       <%= t @user.change_status.to_s unless @user.change_status.nil? %>
     </p>
     <p>
