@@ -1,7 +1,4 @@
 RhSetelia::Application.routes.draw do
-  get 'profiles/new'
-
-  get 'profiles/create'
 
   devise_for :admins
   resources :users do

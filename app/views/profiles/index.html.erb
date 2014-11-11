@@ -1,0 +1,19 @@
+<% provide(:title, 'Profils') %>
+
+<div class="row">
+  <div class="span5 offset7">
+    <div style="float:right;">
+      <%= link_to raw("<i class=\"fa fa-plus\"></i> profil"), 
+          new_profile_path, 
+          class: "btn btn-small btn-success" %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <ul class="profiles">
+    <%= render @profiles %>
+  </ul>
+</div>
