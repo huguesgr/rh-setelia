@@ -5,6 +5,7 @@ class Skill < ActiveRecord::Base
 	has_many :proficiencies, dependent: :destroy
   belongs_to :category
   
-  validates :keyword, presence: true, uniqueness: true
+  validates :keyword, presence: true
+  validates_uniqueness_of :keyword, :scope => :category
   validates :category, presence: true
 end
