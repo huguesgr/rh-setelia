@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
   def index
-    @profiles = Profile.order(:label).all
+    @profiles = Profile.all
   end
   def edit
     @profile = Profile.find(params[:id])

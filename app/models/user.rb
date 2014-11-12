@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
   has_many :events, dependent: :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true
 
-  has_attached_file :attachment
-
   has_many :contracts, dependent: :destroy
   accepts_nested_attributes_for :contracts, :allow_destroy => true
+
+  has_many :attachments, dependent: :destroy
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
@@ -26,7 +27,6 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, :phony_plausible => true
-  validates_attachment_file_name :attachment, :matches => [/pdf\Z/, /docx?\Z/, /odt\Z/, /rtf\Z/, /txt\Z/]
 
   MOBILITY = ["Ile-de-France", "France"]
   EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]

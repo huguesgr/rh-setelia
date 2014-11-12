@@ -177,10 +177,17 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :attachment, class: "control-label" %>
-  <div class="controls">
-  <%= f.file_field :attachment %>
-  </div>
+  <%= f.label :attachments, Attachment.model_name.human.pluralize, class: "control-label" %>
+    <div class="controls">
+      <%= f.fields_for :attachments do |attachment_form| %>
+      <p>
+        <%= attachment_form.text_field :resume_file_name, :readonly => true unless attachment_form.object.new_record? %>
+        <%= attachment_form.file_field :resume if attachment_form.object.new_record?  %>
+        <%= attachment_form.link_to_remove "<i class='icon-remove-sign'></i>  ".html_safe %>
+      </p>
+      <% end %>
+      <%= f.link_to_add "<i class='icon-plus'></i>  ".html_safe, :attachments %>
+    </div>
   </div>
 
   <div class="control-group">

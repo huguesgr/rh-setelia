@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006154055) do
+ActiveRecord::Schema.define(version: 20141112220836) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20141006154055) do
   end
 
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "attachments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -106,10 +116,6 @@ ActiveRecord::Schema.define(version: 20141006154055) do
     t.integer  "interview_result"
     t.integer  "interview_state"
     t.string   "comment"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
     t.boolean  "change_status"
     t.integer  "diploma"
     t.integer  "profile"
