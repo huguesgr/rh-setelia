@@ -28,6 +28,12 @@ class ProfilesController < ApplicationController
       render 'new'
     end
   end
+  def destroy    
+    @profile = Profile.find(params[:id])
+    @profile.destroy
+    flash[:success] = "#{Profile.model_name.human} supprimé."
+    redirect_to profiles_path
+  end
 
   private
   
