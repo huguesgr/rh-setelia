@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
   end
   def index
-    @users = User.all.paginate(:page => params[:page])
+    @users = User.paginate(:page => params[:page])
   end
   def search
     if params[:q].blank?
