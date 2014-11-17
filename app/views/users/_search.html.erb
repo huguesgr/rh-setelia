@@ -46,9 +46,10 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :international_mobility_gteq, User.human_attribute_name(:international_mobility), class: "control-label" %>
+  <%= f.label :international_mobility_eq, User.human_attribute_name(:international_mobility), class: "control-label" %>
   <div class="controls">
-  <%= f.check_box :international_mobility_gteq %>
+  <%= f.radio_button :international_mobility_eq, 'true' %> Oui
+  <%= f.radio_button :international_mobility_eq, 'false' %> Non
   </div>
   </div>
 
