@@ -39,7 +39,7 @@
   <div class="control-group">
   <%= f.label :profile, class: "control-label" %>
   <div class="controls">
-  <%= f.collection_select :profile, Profile.all, :id, :label, :selected => f.object.profile, :prompt => true %>
+  <%= f.collection_select :profile_id, Profile.all, :id, :label, :selected => f.object.profile_id, :prompt => true %>
   </div>
   </div>
 

@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @events = @user.events.all
     @contracts = @user.contracts.all
     @attachments = @user.attachments.all
+    @profile = @user.profile
   end
   def edit
     @user = User.find(params[:id])
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :diploma, :profile, :experience, :salary, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:date, :description], attachments_attributes:[:id, :resume, :_destroy])
+      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :diploma, :profile_id, :experience, :salary, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:date, :description], attachments_attributes:[:id, :resume, :_destroy])
     end
 
 end

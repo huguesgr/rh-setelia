@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  default_scope { order('updated_at DESC') }
+
   before_save { self.first_name = first_name.titleize }
   before_save { self.last_name = last_name.upcase }
   phony_normalize :phone, :default_country_code => 'FR'
 
   has_many :skills, through: :proficiencies
   has_many :proficiencies, dependent: :destroy
+
+  belongs_to :profile, dependent: :destroy
 
   has_many :languages, through: :speaks
   has_many :speaks, dependent: :destroy

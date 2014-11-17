@@ -23,7 +23,7 @@
     <% if @user.profile.present? %>
     <p>
       <%= fa_icon "bookmark" %>
-      <%= Profile.find(@user.profile).label %>
+      <%= @user.profile.label %>
     </p>
     <% end %>
     <p>
