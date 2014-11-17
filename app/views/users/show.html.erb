@@ -59,7 +59,7 @@
       <%= User::MOBILITY[@user.mobility] %>
     </p>
     <% end %>
-    <% if @user.diploma.present? %>  
+    <% if @user.international_mobility.present? %>  
     <p>
       <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility).capitalize %></b>
       <%= t @user.international_mobility.to_s %>
