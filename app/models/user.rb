@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  before_save { self.email = email.downcase }
   before_save { self.first_name = first_name.titleize }
   before_save { self.last_name = last_name.upcase }
   phony_normalize :phone, :default_country_code => 'FR'
