@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :phone, :phony_plausible => true
 
-  MOBILITY = ["Ile-de-France", "France"]
+  MOBILITY = ["Ile-de-France", "France", "Alsace", "Aquitaine", "Auvergne", "Basse-Normandie", "Bourgogne", "Bretagne", "Centre", "Champagne-Ardenne", "Corse", "Franche-Comté", "Guadeloupe", "Guyane", "Haute-Normandie", "La Réunion", "Languedoc-Roussillon", "Limousin", "Lorraine", "Martinique", "Mayotte", "Midi-Pyrénées", "Nord-Pas-de-Calais", "Pays de la Loire", "Picardie", "Poitou-Charentes", "Provence-Alpes-Côte d'Azur", "Rhône-Alpes"]
   EXPERIENCE = ["< 1 an", "1 à 3 ans", "3 à 5 ans", "5 à 8 ans", "> 8 ans"]
   SALARY = ["Moins de 22k", "22-25k", "25-30k", "30-35k", "35-40k", "40-45k", "45-50k", "50-55k", "55-60k", "60-65k", "65-70k", "Plus de 70k"]
   INTERVIEW_RESULT = ["Top", "OK", "NOK"]
