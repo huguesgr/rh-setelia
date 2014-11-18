@@ -25,3 +25,7 @@ gem 'coffee-rails', '4.0.1'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails', '3.1.1'
+
+group :production do
+  gem 'rails_12factor'
+end
