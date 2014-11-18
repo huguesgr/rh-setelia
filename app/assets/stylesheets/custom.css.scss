@@ -122,13 +122,8 @@ footer {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
-}
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-
-  display: inline-block;
+  display: inline;
   float: left;
 }
 
