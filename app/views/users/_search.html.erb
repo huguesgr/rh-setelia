@@ -39,6 +39,13 @@
   </div>
 
   <div class="control-group">
+  <%= f.label :profile_id_eq, User.human_attribute_name(:profile), class: "control-label" %>
+  <div class="controls">
+  <%= f.select :profile_id_eq, Profile.all.collect {|p| [ p.label, p.id ] }, include_blank: true %>
+  </div>
+  </div>
+
+  <div class="control-group">
   <%= f.label :mobility_eq, User.human_attribute_name(:mobility), class: "control-label" %>
   <div class="controls">
   <%= f.select :mobility_eq, User::MOBILITY.each_with_index.map {|name, index| [name,index]}, include_blank: true %>

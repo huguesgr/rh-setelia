@@ -60,7 +60,8 @@
   <div class="control-group">
   <%= f.label :international_mobility, class: "control-label" %>
   <div class="controls">
-  <%= f.check_box :international_mobility %>
+  <%= f.radio_button :international_mobility, 'true' %> Oui
+  <%= f.radio_button :international_mobility, 'false' %> Non
   </div>
   </div>
 
