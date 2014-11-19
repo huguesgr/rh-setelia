@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :skills, through: :proficiencies
   has_many :proficiencies, dependent: :destroy
 
-  belongs_to :profile, dependent: :destroy
+  belongs_to :profile
 
   has_many :languages, through: :speaks
   has_many :speaks, dependent: :destroy
