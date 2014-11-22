@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     else
       @q = User.search(params[:q])
     end
-    @users = @q.result(distinct: true).paginate(:page => params[:page])
+    @users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 10)
   end
   def new
     @user = User.new
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     @contracts = @user.contracts.all
     @attachments = @user.attachments.all
     @profile = @user.profile
+    @areas = @user.areas.all
   end
   def edit
     @user = User.find(params[:id])
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :mobility, :international_mobility, :diploma, :profile_id, :experience, :salary, :availability, :interview_state, :interview_result, :comment, skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:id, :date, :description, :_destroy], attachments_attributes:[:id, :resume, :_destroy])
+      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :international_mobility, :diploma, :profile_id, :experience, :salary, :availability, :interview_state, :interview_result, :comment, area_ids: [], skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:id, :date, :description, :_destroy], attachments_attributes:[:id, :resume, :_destroy])
     end
 
 end

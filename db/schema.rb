@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117210344) do
+ActiveRecord::Schema.define(version: 20141122171859) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20141117210344) do
   end
 
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "areas", force: true do |t|
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attachments", force: true do |t|
     t.datetime "created_at"
@@ -63,6 +69,13 @@ ActiveRecord::Schema.define(version: 20141117210344) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mobilities", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

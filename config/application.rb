@@ -57,6 +57,10 @@ module RhSetelia
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.generators.assets = false
+    config.generators.helper = false
+    config.generators.test_framework = false
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 	

@@ -46,9 +46,14 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :mobility_eq, User.human_attribute_name(:mobility), class: "control-label" %>
+  <%= f.label :areas_id, "mobilité (au moins un)", User.human_attribute_name(:areas), class: "control-label" %>
   <div class="controls">
-  <%= f.select :mobility_eq, User::MOBILITY.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
+    <% Area.all.each do |area| %>
+      <label class="category-select">
+        <%= check_box_tag("q[areas_id_eq_any][]", area.id) %>
+        <%= area.label %>
+      </label>
+    <% end %>
   </div>
   </div>
 

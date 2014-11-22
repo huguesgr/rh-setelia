@@ -51,17 +51,17 @@
   </div>
 
   <div class="control-group">
-  <%= f.label :mobility, class: "control-label" %>
-  <div class="controls">
-  <%= f.select :mobility, User::MOBILITY.each_with_index.map { |value, index| [value,index] }, :prompt => true %>
-  </div>
-  </div>
-  
-  <div class="control-group">
   <%= f.label :international_mobility, class: "control-label" %>
   <div class="controls">
   <%= f.radio_button :international_mobility, 'true' %> Oui
   <%= f.radio_button :international_mobility, 'false' %> Non
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :areas, class: "control-label" %>
+  <div class="checkbox-list controls">
+  <%= f.collection_check_boxes :area_ids, Area.all, :id, :label %>
   </div>
   </div>
 

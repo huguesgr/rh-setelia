@@ -44,6 +44,7 @@ fr:
         id: connues
         keyword: libellé
       user:
+        areas: mobilité
         attachment: pièce jointe
         attachment_file_name: format de la pièce jointe
         created_at: ajouté le
@@ -53,7 +54,6 @@ fr:
         address: adresse
         email: e-mail
         phone: téléphone
-        mobility: mobilité
         international_mobility: mobilité internationale
         diploma: diplôme
         profile: intitulé de poste

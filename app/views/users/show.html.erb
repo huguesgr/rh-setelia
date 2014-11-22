@@ -26,10 +26,12 @@
       <%= @user.profile.label %>
     </p>
     <% end %>
+    <% if @user.email.present? %>
     <p>
       <%= fa_icon "envelope" %>
       <%= mail_to @user.email %>
     </p>
+    <% end %>
     <p>
       <%= fa_icon "save" %>
       <%= timeago_tag @user.created_at, :nojs => true, :limit => 10.days.ago, :lang => :fr %>
@@ -53,12 +55,10 @@
     <%= render @attachments %>
   </div>
   <div class="span6 well">
-    <% if @user.mobility.present? %>  
     <p>
-      <%= fa_icon "truck" %> <b><%= User.human_attribute_name(:mobility).capitalize %></b>
-      <%= User::MOBILITY[@user.mobility] %>
+      <%= fa_icon "truck" %> <b><%= User.human_attribute_name(:areas).capitalize %></b>
+      <%= render @areas %>
     </p>
-    <% end %>
     <% if @user.international_mobility.present? %>  
     <p>
       <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility).capitalize %></b>
@@ -71,16 +71,18 @@
       <%= User::DIPLOMA[@user.diploma] %>
     </p>
     <% end %>
-    <% if @user.experience.present? %>  
+    <% if @user.experience.present? %>
     <p>
       <%= fa_icon "book" %> <b><%= User.human_attribute_name(:experience).capitalize %></b>
       <%= User::EXPERIENCE[@user.experience] %>
     </p>
     <% end %>
+    <% unless @user.contracts.empty? %>
     <p>
       <%= fa_icon "file-text" %> <b><%= User.human_attribute_name(:contract).capitalize %></b>
       <%= render @contracts %>
     </p>
+    <% end %>
     <% if @user.availability.present? %>  
     <p>
       <%= fa_icon "check" %> <b><%= User.human_attribute_name(:availability).capitalize %></b>
@@ -100,7 +102,7 @@
     <div>
       <%= fa_icon "star" %>
       <% Category.all.each do |cat| %>
-        <ol class="speaks">
+        <ol class="skills">
           <% unless @skills.where(category: cat).empty? %>
             <dd><%= render @skills.where(category: cat) %></dd>
           <% end %>
@@ -131,10 +133,12 @@
       <b><%= User.human_attribute_name(:change_status).capitalize %></b>
       <%= t @user.change_status.to_s unless @user.change_status.nil? %>
     </p>
+    <% if @user.comment.present? %> 
     <p>
       <%= fa_icon "comment" %>
       <%= @user.comment %>
     </p>
+    <% end %>
   </div>
 </div>
 
