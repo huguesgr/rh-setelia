@@ -1,3 +1,5 @@
+<% provide(:title, 'Connexion') %>
+
 <div class="row">
   <div class="span2 offset5">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,7 +18,7 @@
         </div>
       <% end -%>
 
-      <div><%= f.submit "connexion", class: "btn btn-large btn-primary" %></div>
+      <div><%= f.submit "valider", class: "btn btn-large btn-primary" %></div>
     <% end %>
 
     <%-# render "devise/shared/links" %>
