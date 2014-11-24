@@ -57,6 +57,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.2.1)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
@@ -161,6 +164,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.9)
   coffee-rails (= 4.0.1)
   devise
+  exception_notification
   font-awesome-rails
   jquery-rails (= 3.1.1)
   nested_form

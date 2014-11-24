@@ -15,6 +15,7 @@ RhSetelia::Application.routes.draw do
   resources :events
 
   match '/home'   , to: 'static_pages#home',          via: 'get'
+  match '/test_exception', to: 'application#test_exception', via: 'get'
 
   root :to => 'static_pages#home'
   
