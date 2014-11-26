@@ -74,7 +74,7 @@ RhSetelia::Application.configure do
   config.middleware.use ExceptionNotification::Rack,
     :email => {
       :email_prefix => "[RH-Setelia] ",
-      :sender_address => %{"notifier" <notifier@localhost>},
+      :sender_address => %{"notifier" <#{ENV['EMAIL_ADDRESS']}>},
       :exception_recipients => [ENV['EMAIL_ADDRESS']]
   }
 end
