@@ -10,9 +10,6 @@ fr:
   "false": non
   "true": oui
   "destroy": supprimer
-  will_paginate:
-    previous_label: "précédent"
-    next_label: "suivant"
   activerecord:
     errors:
       models:
