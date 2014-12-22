@@ -33,8 +33,6 @@ GEM
       gem_config (~> 0.3)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
-    bootstrap-will_paginate (0.0.9)
-      will_paginate
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -156,7 +154,6 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -164,7 +161,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-navbar (= 2.1.4)
   bootstrap-sass (= 2.3.2.0)
-  bootstrap-will_paginate (= 0.0.9)
   coffee-rails (= 4.0.1)
   devise
   exception_notification
@@ -182,4 +178,3 @@ DEPENDENCIES
   sass-rails (= 4.0.3)
   sprockets (= 2.11.0)
   uglifier (>= 1.0.3)
-  will_paginate (= 3.0.4)
