@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     else
       @q = User.search(params[:q])
     end
-    #@users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 10)
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).page params[:page]
   end
   def new
     @user = User.new
