@@ -1,0 +1,15 @@
+<% provide(:title, 'Administrateurs') %>
+
+<div class="row">
+  <div class="span10 offset1">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>email</td>
+          <td>actif</td>
+        </tr>
+      </thead>
+      <%= render @admins %>
+    </table>
+  </div>
+</div>

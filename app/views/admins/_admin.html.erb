@@ -1,0 +1,8 @@
+<tr>
+  <td><%= admin.email %></td>
+  <td>
+    <%= link_to url_for({:controller => "admins", :id => admin.id, :action => :switch}), :data => {:confirm => "Êtes-vous sûr ?"} do %>
+      <%= admin.approved ? "<i class=\"fa fa-toggle-on\"></i>".html_safe : "<i class=\"fa fa-toggle-off\"></i>".html_safe %>
+    <% end %>
+  </td>
+</tr>

@@ -19,7 +19,12 @@ fr:
               spoofed_media_type: a une extension qui ne correspond pas au contenu
             attachment_file_name:
               invalid: a un format invalide
-
+  devise:
+    registrations:
+      admin:
+        signed_up_but_not_approved: 'Votre compte devra être validé par un administrateur'
+    failure:
+      not_approved: "Votre compte n'a pas encore été validé."
     models:
       user: C.V.
       admin: administrateur

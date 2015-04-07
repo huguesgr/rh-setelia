@@ -8,6 +8,7 @@ RhSetelia::Application.routes.draw do
     resources :events
   end
   resources :admins
+  get 'admins/switch/:id',       to: 'admins#switch'
   resources :skills
   resources :profiles
   resources :categories
