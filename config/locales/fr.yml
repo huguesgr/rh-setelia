@@ -1,4 +1,4 @@
-# French translations for Ruby on Rails
+  # French translations for Ruby on Rails
 # by Christian Lescuyer (christian@flyingcoders.com)
 # contributors:
 #  - Sebastien Grosjean - ZenCocoon.com
@@ -13,6 +13,12 @@ fr:
   activerecord:
     errors:
       models:
+        admin:
+          attributes:
+            password:
+              password_format: "au format incorrect"
+              equal_to_current_password: "doit être différent de l'actuel"
+              taken_in_past: "déjà utilisé précédemment"
         user:
           attributes:
             attachment:
@@ -20,6 +26,9 @@ fr:
             attachment_file_name:
               invalid: a un format invalide
   devise:
+    password_expired:
+      updated: "Mot de passe mis à jour"
+      change_required: "Votre mot de passe a expiré"
     registrations:
       admin:
         signed_up_but_not_approved: 'Votre compte devra être validé par un administrateur'

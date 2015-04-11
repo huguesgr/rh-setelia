@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407182928) do
+ActiveRecord::Schema.define(version: 20150411213700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,10 @@ ActiveRecord::Schema.define(version: 20150407182928) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.boolean  "approved",               default: false, null: false
+    t.datetime "password_changed_at"
   end
 
+  add_index "admins", ["password_changed_at"], name: "index_admins_on_password_changed_at", using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "areas", force: true do |t|
@@ -83,6 +85,16 @@ ActiveRecord::Schema.define(version: 20150407182928) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "old_passwords", force: true do |t|
+    t.string   "encrypted_password",       null: false
+    t.string   "password_salt"
+    t.string   "password_archivable_type", null: false
+    t.integer  "password_archivable_id",   null: false
+    t.datetime "created_at"
+  end
+
+  add_index "old_passwords", ["password_archivable_type", "password_archivable_id"], name: "index_password_archivable", using: :btree
 
   create_table "proficiencies", force: true do |t|
     t.integer  "user_id"

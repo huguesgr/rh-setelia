@@ -1,0 +1,32 @@
+<% provide(:title, 'Mise à jour du mot de passe') %>
+
+<%= form_for(resource, :as => resource_name, :url => [resource_name, :password_expired], :html => { :method => :put, class: 'form-horizontal' }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="control-group">
+  <%= f.label :password, class: "control-label" %>
+  <div class="controls">
+  <%= f.password_field :password, :autocomplete => "off" %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :password_confirmation, class: "control-label" %>
+  <div class="controls">
+  <%= f.password_field :password_confirmation %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <%= f.label :current_password, class: "control-label" %>
+  <div class="controls">
+  <%= f.password_field :current_password %>
+  </div>
+  </div>
+
+  <div class="control-group">
+  <div class="controls">
+  <%= f.submit t('.update', :default => "Valider"), class: "btn btn-small btn-primary" %>
+  </div>
+  </div>
+<% end %>
