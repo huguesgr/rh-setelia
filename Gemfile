@@ -11,13 +11,16 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-navbar', '2.1.4'
 gem 'font-awesome-rails'
 
+gem 'devise'
+gem 'devise_security_extension'
+gem 'rails_email_validator'
+
+gem 'thin'
 gem 'pg'
 gem 'ransack'
 gem 'paperclip', '~> 4.2'
 gem 'nested_form'
-gem 'devise'
-gem 'devise_security_extension'
-gem 'rails_email_validator'
+
 gem 'rails-timeago', '~> 2.0'
 gem 'exception_notification'
 
