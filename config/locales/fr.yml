@@ -26,6 +26,10 @@ fr:
             attachment_file_name:
               invalid: a un format invalide
   devise:
+    passwords:
+      admin:
+        send_instructions: "Un e-mail de récupération vous a été envoyé"
+        updated: "Mot de passe mis à jour"
     password_expired:
       updated: "Mot de passe mis à jour"
       change_required: "Votre mot de passe a expiré"
