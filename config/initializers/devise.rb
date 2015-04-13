@@ -150,7 +150,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 10.minutes
 
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
@@ -267,7 +267,7 @@ Devise.setup do |config|
   config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/
 
   # How many passwords to keep in archive
-  config.password_archiving_count = 5
+  config.password_archiving_count = 24
 
   # Deny old password (true, false, count)
   config.deny_old_passwords = true
