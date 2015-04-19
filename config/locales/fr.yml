@@ -81,6 +81,7 @@ fr:
         comment: commentaire
         availability: disponibilité
         change_status: changement de statut à faire
+        consultant: consultant
       user/speaks:
         level: niveau de langue
       user/attachments:

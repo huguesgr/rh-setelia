@@ -133,6 +133,12 @@
       <b><%= User.human_attribute_name(:change_status).capitalize %></b>
       <%= t @user.change_status.to_s unless @user.change_status.nil? %>
     </p>
+    <% if @user.consultant.present? %> 
+    <p>
+      <b><%= User.human_attribute_name(:consultant).capitalize %></b>
+      <%= @user.consultant.label %>
+    </p>
+    <% end %>
     <% if @user.comment.present? %> 
     <p>
       <%= fa_icon "comment" %>

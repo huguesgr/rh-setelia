@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :proficiencies, dependent: :destroy
 
   belongs_to :profile
+  belongs_to :consultant
 
   has_many :areas, through: :mobilities
   has_many :mobilities, dependent: :destroy
