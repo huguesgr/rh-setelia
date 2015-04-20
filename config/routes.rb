@@ -14,6 +14,7 @@ RhSetelia::Application.routes.draw do
   resources :categories
   resources :languages
   resources :events
+  resources :consultants
 
   match '/home'   , to: 'static_pages#home',          via: 'get'
   match '/test_exception', to: 'application#test_exception', via: 'get'
