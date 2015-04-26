@@ -71,6 +71,7 @@ fr:
         email: e-mail
         phone: téléphone
         international_mobility: mobilité internationale
+        international_area: zone de mobilité internationale
         diploma: diplôme
         profile: intitulé de poste
         experience: expérience
@@ -91,8 +92,6 @@ fr:
         date: date de l'événement
       user/contracts:
         type: type de contrat
-
-
 
   date:
     abbr_day_names:

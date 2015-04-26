@@ -62,7 +62,7 @@
     <% if @user.international_mobility.present? %>  
     <p>
       <%= fa_icon "plane" %> <b><%= User.human_attribute_name(:international_mobility).capitalize %></b>
-      <%= t @user.international_mobility.to_s %>
+      <%= t @user.international_mobility.to_s %> <%= "(#{@user.international_area.label})" if @user.international_area.present? %>
     </p>
     <% end %>
     <% if @user.diploma.present? %>  

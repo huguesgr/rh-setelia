@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   belongs_to :profile
   belongs_to :consultant
+  belongs_to :international_area
 
   has_many :areas, through: :mobilities
   has_many :mobilities, dependent: :destroy

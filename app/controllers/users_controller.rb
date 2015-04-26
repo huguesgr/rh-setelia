@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :international_mobility, :diploma, :profile_id, :consultant_id, :experience, :salary, :availability, :interview_state, :interview_result, :comment, area_ids: [], skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:id, :date, :description, :_destroy], attachments_attributes:[:id, :resume, :_destroy])
+      params.require(:user).permit(:change_status, :first_name, :last_name, :email, :address, :phone, :international_mobility, :international_area_id, :diploma, :profile_id, :consultant_id, :experience, :salary, :availability, :interview_state, :interview_result, :comment, area_ids: [], skill_ids: [], speaks_attributes: [:id, :level, :language_id, :_destroy], contracts_attributes: [:id, :type, :_destroy], events_attributes:[:id, :date, :description, :_destroy], attachments_attributes:[:id, :resume, :_destroy])
     end
 
 end

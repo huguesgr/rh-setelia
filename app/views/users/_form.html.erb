@@ -66,6 +66,13 @@
   </div>
 
   <div class="control-group">
+  <%= f.label :international_area, class: "control-label" %>
+  <div class="controls">
+  <%= f.collection_select :international_area_id, InternationalArea.all, :id, :label, :selected => f.object.international_area_id, :prompt => true %>
+  </div>
+  </div>
+
+  <div class="control-group">
   <%= f.label :areas, class: "control-label" %>
   <div class="checkbox-list controls">
   <%= f.collection_check_boxes :area_ids, Area.all, :id, :label %>
