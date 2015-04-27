@@ -14,7 +14,6 @@ Language.create(name: "Portuguais")
 Language.create(name: "Russe")
 
 Area.create(label: "Ile-de-France")
-Area.create(label: "France")
 Area.create(label: "Alsace")
 Area.create(label: "Aquitaine")
 Area.create(label: "Auvergne")
