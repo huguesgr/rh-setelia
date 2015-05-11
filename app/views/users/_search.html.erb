@@ -94,6 +94,14 @@
   </div>
 
   <div class="control-group">
+  <%= f.label :consultant_id_eq, User.human_attribute_name(:consultant), class: "control-label" %>
+  <div class="controls">
+  <%= f.select :consultant_id_eq, Consultant.all.collect {|p| [ p.label, p.id ] }, include_blank: true %>
+  </div>
+  </div>
+
+
+  <div class="control-group">
   <%= f.label :interview_state_eq, User.human_attribute_name(:interview_state), class: "control-label" %>
   <div class="controls">
   <%= f.select :interview_state_eq, User::INTERVIEW_STATE.each_with_index.map {|name, index| [name,index]}, include_blank: true %>
