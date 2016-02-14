@@ -1,4 +1,4 @@
-# Created by http://www.gitignore.io
+s# Created by http://www.gitignore.io
 
 ### Rails ###
 *.rbc
@@ -35,3 +35,5 @@ config/initializers/secret_token.rb
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+
+.env.web

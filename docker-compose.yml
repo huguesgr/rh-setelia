@@ -1,0 +1,13 @@
+db:
+  image: postgres
+web:
+  build: .
+  command: bundle exec rails s -p 3002 -b '0.0.0.0'
+  volumes:
+    - .:/tmt
+  ports:
+    - "3002:3002"
+  links:
+    - db
+  env_file:
+    - '.env.web'

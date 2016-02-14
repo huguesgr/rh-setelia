@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.1.2"
+ruby "2.2.2"
 
 gem 'rails', '4.1.5'
+gem 'therubyracer'
 
 gem 'sprockets', '2.11.0'
 gem 'kaminari'
